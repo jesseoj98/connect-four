@@ -13,7 +13,11 @@ public class Generator {
 	}
 
 	public char[][] generateComplexGameBoard() {
-		return new char[GAME_BOARD_X_AXIS][GAME_BOARD_Y_AXIS];
+		final char[][] complexGameBoard = new char[GAME_BOARD_X_AXIS][];
+		for (int i = 0; i < GAME_BOARD_X_AXIS; i++) {
+			complexGameBoard[i] = new char[GAME_BOARD_Y_AXIS];
+		}
+		return complexGameBoard;
 	}
 
 }
