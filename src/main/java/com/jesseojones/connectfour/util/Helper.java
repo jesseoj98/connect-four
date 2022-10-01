@@ -4,6 +4,8 @@ public class Helper {
 
 	private static final int PREVIOUS_SIMPLE_ROW = 7;
 
+	private static final int SIMPLE_FLOOR = 35;
+
 	public boolean isSpaceAlreadyOccupied(char space) {
 		return space == 'X' || space == 'O';
 	}
@@ -18,6 +20,10 @@ public class Helper {
 		} else {
 			return value - PREVIOUS_SIMPLE_ROW;
 		}
+	}
+
+	private int simpleFloorValue(int value) {
+		return value + SIMPLE_FLOOR;
 	}
 
 }
