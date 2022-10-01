@@ -14,6 +14,25 @@ public class Helper {
 		return isSpaceAlreadyOccupied(board[space]);
 	}
 
+	public void insertIntoSimpleBoard(char[] board, int column, char insert) throws Exception {
+		int space = simpleFloorValue(column);
+		if (!isSimpleSpaceAlreadyOccupied(board, space)) {
+			insertIntoSimpleBoard(board, space, insert);
+		} else {
+			do {
+				space = upOneSimpleRow(space);
+				if (space < PREVIOUS_SIMPLE_ROW && isSimpleSpaceAlreadyOccupied(board, space)) {
+					break;
+				}
+			} while (!isSimpleSpaceAlreadyOccupied(board, space));
+			if (isSimpleSpaceAlreadyOccupied(board, space)) {
+				System.out.println("Cannot insert, column full!");
+			} else {
+				insertIntoSimpleBoard(board, space, insert);
+			}
+		}
+	}
+
 	private int upOneSimpleRow(int value) {
 		if (value < PREVIOUS_SIMPLE_ROW) {
 			return value;
