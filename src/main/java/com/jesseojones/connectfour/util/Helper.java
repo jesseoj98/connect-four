@@ -18,7 +18,7 @@ public class Helper {
 		board[space] = insert;
 	}
 
-	public void insertIntoSimpleBoard(char[] board, int column, char insert) {
+	public int insertIntoSimpleBoard(char[] board, int column, char insert) {
 		int space = simpleFloorValue(column);
 		if (!isSimpleSpaceAlreadyOccupied(board, space)) {
 			insertIntoSimpleBoard(board, space, insert);
@@ -35,6 +35,7 @@ public class Helper {
 				insertInputIntoSimpleBoard(board, space, insert);
 			}
 		}
+		return space;
 	}
 
 	private int upOneSimpleRow(int value) {
