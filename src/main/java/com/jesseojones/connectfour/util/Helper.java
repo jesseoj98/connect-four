@@ -32,7 +32,7 @@ public class Helper {
 			if (isSimpleSpaceAlreadyOccupied(board, space)) {
 				System.out.println("Cannot insert, column full!");
 			} else {
-				insertIntoSimpleBoard(board, space, insert);
+				insertInputIntoSimpleBoard(board, space, insert);
 			}
 		}
 	}
