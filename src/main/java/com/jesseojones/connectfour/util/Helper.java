@@ -14,6 +14,10 @@ public class Helper {
 		return isSpaceAlreadyOccupied(board[space]);
 	}
 
+	private void insertInputIntoSimpleBoard(char[] board, int space, char insert) {
+		board[space] = insert;
+	}
+
 	public void insertIntoSimpleBoard(char[] board, int column, char insert) {
 		int space = simpleFloorValue(column);
 		if (!isSimpleSpaceAlreadyOccupied(board, space)) {
