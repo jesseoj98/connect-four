@@ -14,7 +14,7 @@ public class Helper {
 		return isSpaceAlreadyOccupied(board[space]);
 	}
 
-	public void insertIntoSimpleBoard(char[] board, int column, char insert) throws Exception {
+	public void insertIntoSimpleBoard(char[] board, int column, char insert) {
 		int space = simpleFloorValue(column);
 		if (!isSimpleSpaceAlreadyOccupied(board, space)) {
 			insertIntoSimpleBoard(board, space, insert);
