@@ -2,13 +2,13 @@ package com.jesseojones.connectfour.domain;
 
 public class Coordinate {
 
-	private int xCoordinate;
+	private int x;
 
-	private int yCoordinate;
+	private int y;
 
-	public Coordinate(int xCoordinate, int yCoordinate) {
-		this.xCoordinate = xCoordinate;
-		this.yCoordinate = yCoordinate;
+	public Coordinate(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 }
