@@ -1,18 +1,16 @@
 package com.jesseojones.connectfour.util;
 
+import com.jesseojones.connectfour.domain.GameBoard;
+
 public class Printer {
-
-	private static final int GAME_BOARD_X_AXIS = 7;
-
-	private static final int GAME_BOARD_SPACES = 42;
 
 	private static Helper helper = new Helper();
 
 	public void printSimpleGameBoard(char[] board) {
 		printGameBoardInsertNumbers();
 		printGameBoardDivider();
-		for (int i = 0; i < GAME_BOARD_SPACES; i++) {
-			if ((i + 1) % GAME_BOARD_X_AXIS == 0) {
+		for (int i = 0; i < GameBoard.GAME_BOARD_SPACES; i++) {
+			if ((i + 1) % GameBoard.GAME_BOARD_X_AXIS == 0) {
 				System.out.println("|" + printGameBoardSpace(board[i]) + "|");
 				printGameBoardDivider();
 			} else {
@@ -27,8 +25,8 @@ public class Printer {
 
 	private void printGameBoardInsertNumbersLoop() {
 		System.out.print("  ");
-		for (int i = 0; i < GAME_BOARD_X_AXIS; i++) {
-			if (i != GAME_BOARD_X_AXIS - 1) {
+		for (int i = 0; i < GameBoard.GAME_BOARD_X_AXIS; i++) {
+			if (i != GameBoard.GAME_BOARD_X_AXIS - 1) {
 				System.out.print((i + 1) + "   ");
 			} else {
 				System.out.print((i + 1) + "  ");
