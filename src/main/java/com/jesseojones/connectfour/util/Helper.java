@@ -1,10 +1,8 @@
 package com.jesseojones.connectfour.util;
 
+import com.jesseojones.connectfour.domain.GameBoard;
+
 public class Helper {
-
-	private static final int PREVIOUS_SIMPLE_ROW = 7;
-
-	private static final int SIMPLE_FLOOR = 35;
 
 	public boolean isSpaceAlreadyOccupied(char space) {
 		return space == 'X' || space == 'O';
@@ -25,7 +23,7 @@ public class Helper {
 		} else {
 			do {
 				space = upOneSimpleRow(space);
-				if (space < PREVIOUS_SIMPLE_ROW && isSimpleSpaceAlreadyOccupied(board, space)) {
+				if (space < GameBoard.PREVIOUS_SIMPLE_ROW && isSimpleSpaceAlreadyOccupied(board, space)) {
 					break;
 				}
 			} while (!isSimpleSpaceAlreadyOccupied(board, space));
@@ -39,15 +37,15 @@ public class Helper {
 	}
 
 	private int upOneSimpleRow(int value) {
-		if (value < PREVIOUS_SIMPLE_ROW) {
+		if (value < GameBoard.PREVIOUS_SIMPLE_ROW) {
 			return value;
 		} else {
-			return value - PREVIOUS_SIMPLE_ROW;
+			return value - GameBoard.PREVIOUS_SIMPLE_ROW;
 		}
 	}
 
 	private int simpleFloorValue(int value) {
-		return value + SIMPLE_FLOOR;
+		return value + GameBoard.SIMPLE_FLOOR;
 	}
 
 }
