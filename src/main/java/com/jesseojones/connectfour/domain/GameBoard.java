@@ -14,13 +14,11 @@ public class GameBoard {
 
 	public static final int GAME_BOARD_X_AXIS = 7;
 
-	public static final int PREVIOUS_SIMPLE_ROW = 7;
+	public static final int PREVIOUS_ROW = 7;
 
 	public static final int BACKWARD_DIAGONAL = 8;
 
 	public static final int FLOOR = 35;
-
-	public static final int SIMPLE_FLOOR = 35;
 
 	public static final int GAME_BOARD_SPACES = 42;
 

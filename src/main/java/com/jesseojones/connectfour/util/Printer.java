@@ -6,7 +6,7 @@ public class Printer {
 
 	private static Helper helper = new Helper();
 
-	public void printSimpleGameBoard(char[] board) {
+	public void printGameBoard(char[] board) {
 		printGameBoardInsertNumbers();
 		printGameBoardDivider();
 		for (int i = 0; i < GameBoard.GAME_BOARD_SPACES; i++) {

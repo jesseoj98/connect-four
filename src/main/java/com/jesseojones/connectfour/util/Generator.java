@@ -4,7 +4,7 @@ import com.jesseojones.connectfour.domain.GameBoard;
 
 public class Generator {
 
-	public char[] generateSimpleGameBoard() {
+	public char[] generateGameBoard() {
 		return new char[GameBoard.GAME_BOARD_SPACES];
 	}
 
