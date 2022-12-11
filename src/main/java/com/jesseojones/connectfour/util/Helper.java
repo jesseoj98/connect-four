@@ -23,11 +23,8 @@ public class Helper {
 		} else {
 			do {
 				space = upOneRow(space);
-				if (space < GameBoard.PREVIOUS_ROW && isSpaceAlreadyOccupied(board, space)) {
-					break;
-				}
-			} while (!isSpaceAlreadyOccupied(board, space));
-			if (isSpaceAlreadyOccupied(board, space)) {
+			} while (space < 0 || !isSpaceAlreadyOccupied(board, space));
+			if (space < 0 || !isSpaceAlreadyOccupied(board, space)) {
 				System.out.println("Cannot insert, column full!");
 			} else {
 				insertInputIntoBoard(board, space, insert);
@@ -37,11 +34,7 @@ public class Helper {
 	}
 
 	private int upOneRow(int value) {
-		if (value < GameBoard.PREVIOUS_ROW) {
-			return value;
-		} else {
-			return value - GameBoard.PREVIOUS_ROW;
-		}
+		return value - GameBoard.PREVIOUS_ROW;
 	}
 
 	private int floorValue(int value) {
