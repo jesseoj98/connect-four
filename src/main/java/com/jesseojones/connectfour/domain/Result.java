@@ -2,7 +2,7 @@ package com.jesseojones.connectfour.domain;
 
 import java.util.List;
 
-public class Results {
+public class Result {
 
 	private boolean cpuWon;
 
@@ -10,7 +10,7 @@ public class Results {
 
 	private List<Integer> winningSpaces;
 
-	public Results(boolean cpuWon, boolean playerWon, List<Integer> winningSpaces) {
+	public Result(boolean cpuWon, boolean playerWon, List<Integer> winningSpaces) {
 		this.cpuWon = cpuWon;
 		this.playerWon = playerWon;
 		this.winningSpaces = winningSpaces;
