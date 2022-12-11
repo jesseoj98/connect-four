@@ -19,7 +19,7 @@ public class Helper {
 	public int insertIntoBoard(char[] board, int column, char insert) {
 		int space = floorValue(column);
 		if (!isSpaceAlreadyOccupied(board, space)) {
-			insertIntoBoard(board, space, insert);
+			insertInputIntoBoard(board, space, insert);
 		} else {
 			do {
 				space = upOneRow(space);
