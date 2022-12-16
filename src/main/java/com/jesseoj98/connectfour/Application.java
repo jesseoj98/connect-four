@@ -1,4 +1,4 @@
-package com.jesseojones.connectfour;
+package com.jesseoj98.connectfour;
 
 public class Application {
 

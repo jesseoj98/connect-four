@@ -1,4 +1,4 @@
-package com.jesseojones.connectfour.domain;
+package com.jesseoj98.connectfour.domain;
 
 public class GameBoard {
 

@@ -1,6 +1,6 @@
-package com.jesseojones.connectfour.util;
+package com.jesseoj98.connectfour.util;
 
-import com.jesseojones.connectfour.domain.GameBoard;
+import com.jesseoj98.connectfour.domain.GameBoard;
 
 public class Generator {
 

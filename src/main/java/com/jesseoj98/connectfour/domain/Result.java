@@ -1,4 +1,4 @@
-package com.jesseojones.connectfour.domain;
+package com.jesseoj98.connectfour.domain;
 
 import java.util.List;
 import java.util.Objects;
