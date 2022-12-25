@@ -23,18 +23,6 @@ public class Printer {
 		System.out.println("  1   2   3   4   5   6   7  ");
 	}
 
-	private void printGameBoardInsertNumbersLoop() {
-		System.out.print("  ");
-		for (int i = 0; i < GameBoard.GAME_BOARD_X_AXIS; i++) {
-			if (i != GameBoard.GAME_BOARD_X_AXIS - 1) {
-				System.out.print((i + 1) + "   ");
-			} else {
-				System.out.print((i + 1) + "  ");
-			}
-		}
-		System.out.println();
-	}
-
 	private void printGameBoardDivider() {
 		System.out.println("|---|---|---|---|---|---|---|");
 	}
