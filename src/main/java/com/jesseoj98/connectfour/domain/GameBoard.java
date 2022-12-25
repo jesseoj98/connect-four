@@ -4,6 +4,8 @@ public class GameBoard {
 
 	public static final int BESIDE = 1;
 
+	public static final int LOWER_BOUND = 1;
+
 	public static final int CEILING = 6;
 
 	public static final int FORWARD_DIAGONAL = 6;
@@ -11,6 +13,8 @@ public class GameBoard {
 	public static final int GAME_BOARD_Y_AXIS = 6;
 
 	public static final int LEVEL = 7;
+
+	public static final int UPPER_BOUND = 7;
 
 	public static final int GAME_BOARD_X_AXIS = 7;
 

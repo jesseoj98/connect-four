@@ -66,4 +66,8 @@ public class Validator {
 		return insert == adjacentValue;
 	}
 
+	public boolean isInputValid(int input) {
+		return input >= GameBoard.LOWER_BOUND && input <= GameBoard.UPPER_BOUND;
+	}
+
 }
