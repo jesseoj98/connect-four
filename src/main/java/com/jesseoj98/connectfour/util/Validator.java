@@ -14,7 +14,7 @@ public class Validator {
 		if (space > GameBoard.CEILING) {
 			// test below adjacent space(s)
 		}
-		if (space < GameBoard.GAME_BOARD_SPACES) {
+		if (space > 20) {
 			return testAboveSpaces(board, space);
 		}
 		if (space % GameBoard.LEVEL == 0) {
@@ -37,21 +37,17 @@ public class Validator {
 	}
 
 	private boolean testAboveSpaces(char[] board, int space) {
-		if (space < 21) {
-			return false;
+		final StringBuilder connectFour = new StringBuilder();
+		int pointer = space;
+		do {
+			connectFour.append(board[pointer]);
+			pointer = retrieveTopAdjacentSpace(pointer);
+		} while (spaceMatch(board[space], board[pointer]));
+		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
+		if (baseString.length() == 4) {
+			return true;
 		} else {
-			final StringBuilder connectFour = new StringBuilder();
-			int pointer = space;
-			do {
-				connectFour.append(board[pointer]);
-				pointer = retrieveTopAdjacentSpace(pointer);
-			} while (spaceMatch(board[space], board[pointer]));
-			final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
-			if (baseString.length() == 4) {
-				return true;
-			} else {
-				return checkBelow(board, 4 - baseString.length(), space, baseString);
-			}
+			return checkBelow(board, 4 - baseString.length(), space, baseString);
 		}
 	}
 
