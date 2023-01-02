@@ -5,6 +5,12 @@ import com.jesseoj98.connectfour.domain.GameBoard;
 public class Validator {
 
 	private boolean connectFour(char[] board, int space) {
+		boolean below = false;
+		boolean above = false;
+		boolean right = false;
+		boolean left = false;
+		boolean forwardDiagonal = false;
+		boolean backwardDiagonal = false;
 		if (space > GameBoard.CEILING) {
 			// test below adjacent space(s)
 		}
@@ -27,7 +33,7 @@ public class Validator {
 		if (space < GameBoard.FLOOR && space % GameBoard.LEVEL == 6) {
 			// test above-right adjacent space(s)
 		}
-		return false;
+		return below || above || right || left || forwardDiagonal || backwardDiagonal;
 	}
 
 	private boolean testAboveSpaces(char[] board, int space) {
