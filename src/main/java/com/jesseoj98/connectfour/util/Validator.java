@@ -40,7 +40,7 @@ public class Validator {
 				connectFour.append(board[pointer]);
 				pointer = retrieveTopAdjacentSpace(pointer);
 			} while (spaceMatch(board[space], board[pointer]));
-			final String baseString = new String(connectFour.toString().substring(0, connectFour.length() - 1));
+			final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
 			if (baseString.length() == 4) {
 				return true;
 			} else {
