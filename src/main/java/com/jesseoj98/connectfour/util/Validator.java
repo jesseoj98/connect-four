@@ -30,6 +30,10 @@ public class Validator {
 		return false;
 	}
 
+	private boolean spaceMatch(char space, char spaceToCheck) {
+		return space == spaceToCheck;
+	}
+
 	private int retrieveTopAdjacentSpace(int value) {
 		return value + GameBoard.LEVEL;
 	}
