@@ -12,15 +12,11 @@ public class GameBoard {
 
 	public static final int RIGHT = 1;
 
-	public static final int BESIDE = 1;
-
 	public static final int LOWER_BOUND = 1;
 
 	public static final int CEILING = 6;
 
-	public static final int BOTTOM_LEFT = 6;
-
-	public static final int FORWARD_DIAGONAL = 6;
+	public static final int BELOW_LEFT = 6;
 
 	public static final int GAME_BOARD_Y_AXIS = 6;
 
@@ -28,15 +24,11 @@ public class GameBoard {
 
 	public static final int LEVEL = 7;
 
-	public static final int PREVIOUS_ROW = 7;
-
 	public static final int UPPER_BOUND = 7;
 
 	public static final int GAME_BOARD_X_AXIS = 7;
 
-	public static final int BOTTOM_RIGHT = 8;
-
-	public static final int BACKWARD_DIAGONAL = 8;
+	public static final int BELOW_RIGHT = 8;
 
 	public static final int FLOOR = 35;
 
