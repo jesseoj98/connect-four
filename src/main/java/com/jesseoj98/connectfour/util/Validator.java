@@ -15,27 +15,35 @@ public class Validator {
 		boolean forwardDiagonal = false;
 		boolean backwardDiagonal = false;
 		if (space < 21) {
+			// test below spaces
 			return checkDirection(board, space, GameBoard.BELOW, GameBoard.ABOVE);
 		}
 		if (space > 20) {
+			// test above spaces
 			return checkDirection(board, space, GameBoard.ABOVE, GameBoard.BELOW);
 		}
 		if (space % GameBoard.LEVEL < 4) {
+			// test right spaces
 			return checkDirection(board, space, GameBoard.LEFT, GameBoard.RIGHT);
 		}
 		if (space % GameBoard.LEVEL > 2) {
+			// test left spaces
 			return checkDirection(board, space, GameBoard.RIGHT, GameBoard.LEFT);
 		}
 		if (space > 13 && space % GameBoard.LEVEL < 4) {
+			// test bottom-left spaces
 			return checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
 		}
 		if (space > 13 && space % GameBoard.LEVEL > 2) {
+			// test bottom-right spaces
 			return checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
 		}
 		if (space < 28 && space % GameBoard.LEVEL < 4) {
+			// test upper-left spaces
 			return checkDirection(board, space, GameBoard.ABOVE_RIGHT, GameBoard.BELOW_LEFT);
 		}
 		if (space < 28 && space % GameBoard.LEVEL > 2) {
+			// test upper-right spaces
 			return checkDirection(board, space, GameBoard.ABOVE_LEFT, GameBoard.BELOW_RIGHT);
 		}
 		return below || above || right || left || forwardDiagonal || backwardDiagonal;
