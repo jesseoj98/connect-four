@@ -14,8 +14,8 @@ public class Validator {
 		boolean left = false;
 		boolean forwardDiagonal = false;
 		boolean backwardDiagonal = false;
-		if (space > GameBoard.CEILING) {
-			// test below adjacent space(s)
+		if (space < 21) {
+			return checkDirection(board, space, GameBoard.BELOW, GameBoard.ABOVE);
 		}
 		if (space > 20) {
 			return checkDirection(board, space, GameBoard.ABOVE, GameBoard.BELOW);
