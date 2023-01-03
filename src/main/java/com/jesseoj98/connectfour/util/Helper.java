@@ -17,12 +17,12 @@ public class Helper {
 	}
 
 	public int insertIntoBoard(char[] board, int column, char insert) {
-		int space = floorValue(column);
+		int space = adjustValue(column, GameBoard.FLOOR);
 		if (!isSpaceAlreadyOccupied(board, space)) {
 			insertInputIntoBoard(board, space, insert);
 		} else {
 			do {
-				space = upOneRow(space);
+				space = adjustValue(space, GameBoard.ABOVE);
 			} while (space < 0 || !isSpaceAlreadyOccupied(board, space));
 			if (space < 0 || !isSpaceAlreadyOccupied(board, space)) {
 				System.out.println("Cannot insert, column full!");
@@ -33,12 +33,8 @@ public class Helper {
 		return space;
 	}
 
-	private int upOneRow(int value) {
-		return value - GameBoard.PREVIOUS_ROW;
-	}
-
-	private int floorValue(int value) {
-		return value + GameBoard.FLOOR;
+	private int adjustValue(int value, int adjustment) {
+		return value + adjustment;
 	}
 
 }

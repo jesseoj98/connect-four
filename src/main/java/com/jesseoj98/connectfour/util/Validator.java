@@ -21,12 +21,12 @@ public class Validator {
 			return testAboveSpaces(board, space);
 		}
 		if (space % GameBoard.LEVEL == 0) {
-			if (valueMatch(board[space], board[retrieveRightAdjacentSpace(space)])) {
+			if (valueMatch(board[space], board[retrieveAdjacentSpace(space, GameBoard.RIGHT)])) {
 				// test right adjacent space(s)
 			}
 		}
 		if (space % GameBoard.LEVEL == 6) {
-			if (valueMatch(board[space], board[retrieveLeftAdjacentSpace(space)])) {
+			if (valueMatch(board[space], board[retrieveAdjacentSpace(space, GameBoard.LEFT)])) {
 				// test left adjacent space(s)
 			}
 		}
@@ -44,7 +44,7 @@ public class Validator {
 		int pointer = space;
 		do {
 			connectFour.append(board[pointer]);
-			pointer = retrieveTopAdjacentSpace(pointer);
+			pointer = retrieveAdjacentSpace(pointer, GameBoard.ABOVE);
 		} while (spaceMatch(board[space], board[pointer]));
 		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
 		if (baseString.length() == 4) {
@@ -57,7 +57,7 @@ public class Validator {
 	private boolean checkBelow(char[] board, int times, int space, String baseString) {
 		final StringBuilder connectFour = new StringBuilder();
 		for (int i = 0; i < times; i++) {
-			space = retrieveBottomAdjacentSpace(space);
+			space = retrieveAdjacentSpace(space, GameBoard.BELOW);
 			connectFour.append(board[space]);
 		}
 		return connectFour.toString().length() + baseString.length() == 4;
@@ -67,36 +67,8 @@ public class Validator {
 		return space == spaceToCheck;
 	}
 
-	private int retrieveTopAdjacentSpace(int value) {
-		return value + GameBoard.LEVEL;
-	}
-
-	private int retrieveRightAdjacentSpace(int value) {
-		return value + GameBoard.BESIDE;
-	}
-
-	private int retrieveBottomAdjacentSpace(int value) {
-		return value - GameBoard.LEVEL;
-	}
-
-	private int retrieveLeftAdjacentSpace(int value) {
-		return value - GameBoard.BESIDE;
-	}
-
-	private int retrieveTopLeftAdjacentSpace(int value) {
-		return value - GameBoard.BACKWARD_DIAGONAL;
-	}
-
-	private int retrieveTopRightAdjacentSpace(int value) {
-		return value - GameBoard.FORWARD_DIAGONAL;
-	}
-
-	private int retrieveBottomRightAdjacentSpace(int value) {
-		return value + GameBoard.BACKWARD_DIAGONAL;
-	}
-
-	private int retrieveBottomLeftAdjacentSpace(int value) {
-		return value + GameBoard.FORWARD_DIAGONAL;
+	private int retrieveAdjacentSpace(int value, int adjustment) {
+		return value + adjustment;
 	}
 
 	private boolean valueMatch(char insert, char adjacentValue) {
