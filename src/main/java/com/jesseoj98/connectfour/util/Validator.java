@@ -20,10 +20,8 @@ public class Validator {
 		if (space > 20) {
 			return checkDirection(board, space, GameBoard.ABOVE, GameBoard.BELOW);
 		}
-		if (space % GameBoard.LEVEL == 0) {
-			if (valueMatch(board[space], board[retrieveAdjacentSpace(space, GameBoard.RIGHT)])) {
-				// test right adjacent space(s)
-			}
+		if (space % GameBoard.LEVEL < 4) {
+			return checkDirection(board, space, GameBoard.LEFT, GameBoard.RIGHT);
 		}
 		if (space % GameBoard.LEVEL == 6) {
 			if (valueMatch(board[space], board[retrieveAdjacentSpace(space, GameBoard.LEFT)])) {
