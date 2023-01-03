@@ -2,11 +2,11 @@ package com.jesseoj98.connectfour.domain;
 
 public class GameBoard {
 
-	public static final int TOP_LEFT = -8;
+	public static final int ABOVE_LEFT = -8;
 
-	public static final int BELOW = -7;
+	public static final int ABOVE = -7;
 
-	public static final int TOP_RIGHT = -6;
+	public static final int ABOVE_RIGHT = -6;
 
 	public static final int LEFT = -1;
 
@@ -24,7 +24,7 @@ public class GameBoard {
 
 	public static final int GAME_BOARD_Y_AXIS = 6;
 
-	public static final int ABOVE = 7;
+	public static final int BELOW = 7;
 
 	public static final int LEVEL = 7;
 
