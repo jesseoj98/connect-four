@@ -18,7 +18,7 @@ public class Validator {
 			// test below adjacent space(s)
 		}
 		if (space > 20) {
-			return testAboveSpaces(board, space);
+			return checkDirection(board, space, GameBoard.ABOVE, GameBoard.BELOW);
 		}
 		if (space % GameBoard.LEVEL == 0) {
 			if (valueMatch(board[space], board[retrieveAdjacentSpace(space, GameBoard.RIGHT)])) {
@@ -39,25 +39,26 @@ public class Validator {
 		return below || above || right || left || forwardDiagonal || backwardDiagonal;
 	}
 
-	private boolean testAboveSpaces(char[] board, int space) {
+	private boolean checkDirection(char[] board, int space, int direction, int oppositeDirection) {
 		final StringBuilder connectFour = new StringBuilder();
 		int pointer = space;
 		do {
 			connectFour.append(board[pointer]);
-			pointer = retrieveAdjacentSpace(pointer, GameBoard.ABOVE);
+			pointer = retrieveAdjacentSpace(pointer, direction);
 		} while (spaceMatch(board[space], board[pointer]));
 		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
 		if (baseString.length() == 4) {
 			return true;
 		} else {
-			return checkBelow(board, 4 - baseString.length(), space, baseString);
+			return checkOppositeDirection(board, oppositeDirection, 4 - baseString.length(), space, baseString);
 		}
 	}
 
-	private boolean checkBelow(char[] board, int times, int space, String baseString) {
+	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
+			String baseString) {
 		final StringBuilder connectFour = new StringBuilder();
 		for (int i = 0; i < times; i++) {
-			space = retrieveAdjacentSpace(space, GameBoard.BELOW);
+			space = retrieveAdjacentSpace(space, oppositeDirection);
 			connectFour.append(board[space]);
 		}
 		return connectFour.toString().length() + baseString.length() == 4;
