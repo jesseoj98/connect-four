@@ -32,6 +32,9 @@ public class Validator {
 		if (space > 13 && space % GameBoard.LEVEL > 2) {
 			return checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
 		}
+		if (space < 28 && space % GameBoard.LEVEL < 4) {
+			return checkDirection(board, space, GameBoard.ABOVE_RIGHT, GameBoard.BELOW_LEFT);
+		}
 		return below || above || right || left || forwardDiagonal || backwardDiagonal;
 	}
 
