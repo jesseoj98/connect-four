@@ -45,7 +45,7 @@ public class Validator {
 		do {
 			connectFour.append(board[pointer]);
 			pointer = retrieveAdjacentSpace(pointer, direction);
-		} while (spaceMatch(board[space], board[pointer]));
+		} while (valueMatch(board[space], board[pointer]));
 		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
 		if (baseString.length() == 4) {
 			return true;
@@ -62,10 +62,6 @@ public class Validator {
 			connectFour.append(board[space]);
 		}
 		return connectFour.toString().length() + baseString.length() == 4;
-	}
-
-	private boolean spaceMatch(char space, char spaceToCheck) {
-		return space == spaceToCheck;
 	}
 
 	private int retrieveAdjacentSpace(int value, int adjustment) {
