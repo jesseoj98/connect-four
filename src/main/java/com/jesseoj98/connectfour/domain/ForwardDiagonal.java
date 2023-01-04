@@ -4,24 +4,13 @@ import java.util.Objects;
 
 public class ForwardDiagonal {
 
-	private int space;
-
 	private int maxAboveRight;
 
 	private int maxBelowLeft;
 
-	public ForwardDiagonal(int space, int maxAboveRight, int maxBelowLeft) {
-		this.space = space;
+	public ForwardDiagonal(int maxAboveRight, int maxBelowLeft) {
 		this.maxAboveRight = maxAboveRight;
 		this.maxBelowLeft = maxBelowLeft;
-	}
-
-	public int getSpace() {
-		return space;
-	}
-
-	public void setSpace(int space) {
-		this.space = space;
 	}
 
 	public int getMaxAboveRight() {
@@ -42,7 +31,7 @@ public class ForwardDiagonal {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(maxAboveRight, maxBelowLeft, space);
+		return Objects.hash(maxAboveRight, maxBelowLeft);
 	}
 
 	@Override
@@ -54,15 +43,13 @@ public class ForwardDiagonal {
 			return false;
 		}
 		ForwardDiagonal other = (ForwardDiagonal) obj;
-		return maxAboveRight == other.maxAboveRight && maxBelowLeft == other.maxBelowLeft && space == other.space;
+		return maxAboveRight == other.maxAboveRight && maxBelowLeft == other.maxBelowLeft;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ForwardDiagonal [space=");
-		builder.append(space);
-		builder.append(", maxAboveRight=");
+		builder.append("ForwardDiagonal [maxAboveRight=");
 		builder.append(maxAboveRight);
 		builder.append(", maxBelowLeft=");
 		builder.append(maxBelowLeft);

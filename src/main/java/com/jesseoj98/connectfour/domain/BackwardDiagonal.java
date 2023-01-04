@@ -4,24 +4,13 @@ import java.util.Objects;
 
 public class BackwardDiagonal {
 
-	private int space;
-
 	private int maxAboveLeft;
 
 	private int maxBelowRight;
 
-	public BackwardDiagonal(int space, int maxAboveLeft, int maxBelowRight) {
-		this.space = space;
+	public BackwardDiagonal(int maxAboveLeft, int maxBelowRight) {
 		this.maxAboveLeft = maxAboveLeft;
 		this.maxBelowRight = maxBelowRight;
-	}
-
-	public int getSpace() {
-		return space;
-	}
-
-	public void setSpace(int space) {
-		this.space = space;
 	}
 
 	public int getMaxAboveLeft() {
@@ -42,7 +31,7 @@ public class BackwardDiagonal {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(maxAboveLeft, maxBelowRight, space);
+		return Objects.hash(maxAboveLeft, maxBelowRight);
 	}
 
 	@Override
@@ -54,15 +43,13 @@ public class BackwardDiagonal {
 			return false;
 		}
 		BackwardDiagonal other = (BackwardDiagonal) obj;
-		return maxAboveLeft == other.maxAboveLeft && maxBelowRight == other.maxBelowRight && space == other.space;
+		return maxAboveLeft == other.maxAboveLeft && maxBelowRight == other.maxBelowRight;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("BackwardDiagonal [space=");
-		builder.append(space);
-		builder.append(", maxAboveLeft=");
+		builder.append("BackwardDiagonal [maxAboveLeft=");
 		builder.append(maxAboveLeft);
 		builder.append(", maxBelowRight=");
 		builder.append(maxBelowRight);
