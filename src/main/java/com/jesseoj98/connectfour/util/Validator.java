@@ -1,8 +1,15 @@
 package com.jesseoj98.connectfour.util;
 
+import java.util.List;
+
 import com.jesseoj98.connectfour.domain.GameBoard;
 
 public class Validator {
+
+	private static final Generator generator = new Generator();
+
+	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
+	private static final List<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
 
 	public boolean connectFour(char[] board, int space) {
 		if (space < 0) {
@@ -12,10 +19,8 @@ public class Validator {
 		boolean above = false;
 		boolean right = false;
 		boolean left = false;
-		boolean bottomLeft = false;
-		boolean bottomRight = false;
-		boolean upperLeft = false;
-		boolean upperRight = false;
+		boolean backwardDiagonal = false;
+		boolean forwardDiagonal = false;
 		if (space < 21) {
 			// test below spaces
 			below = checkDirection(board, space, GameBoard.BELOW, GameBoard.ABOVE);
@@ -32,23 +37,15 @@ public class Validator {
 			// test left spaces
 			left = checkDirection(board, space, GameBoard.RIGHT, GameBoard.LEFT);
 		}
-		if (space > 13 && space % GameBoard.LEVEL < 4) {
+		if (!invalidBackwardDiagonal.contains(space)) {
 			// test bottom-left spaces
-			bottomLeft = checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
+			backwardDiagonal = checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
 		}
-		if (space > 13 && space % GameBoard.LEVEL > 2) {
+		if (!invalidForwardDiagonal.contains(space)) {
 			// test bottom-right spaces
-			bottomRight = checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
+			forwardDiagonal = checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
 		}
-		if (space < 28 && space % GameBoard.LEVEL < 4) {
-			// test upper-left spaces
-			upperLeft = checkDirection(board, space, GameBoard.ABOVE_RIGHT, GameBoard.BELOW_LEFT);
-		}
-		if (space < 28 && space % GameBoard.LEVEL > 2) {
-			// test upper-right spaces
-			upperRight = checkDirection(board, space, GameBoard.ABOVE_LEFT, GameBoard.BELOW_RIGHT);
-		}
-		return below || above || right || left || bottomLeft || bottomRight || upperLeft || upperRight;
+		return below || above || right || left || backwardDiagonal || forwardDiagonal;
 	}
 
 	private boolean checkDirection(char[] board, int space, int direction, int oppositeDirection) {
