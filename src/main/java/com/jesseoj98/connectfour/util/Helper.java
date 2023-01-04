@@ -6,6 +6,7 @@ public class Helper {
 
 	public boolean isSpaceAlreadyOccupied(char space) {
 		return space == 'X' || space == 'O';
+		// return space != ' ';
 	}
 
 	public boolean isSpaceAlreadyOccupied(char[] board, int space) {
