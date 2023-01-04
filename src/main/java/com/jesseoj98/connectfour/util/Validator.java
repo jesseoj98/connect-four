@@ -38,11 +38,11 @@ public class Validator {
 			left = checkDirection(board, space, GameBoard.RIGHT, GameBoard.LEFT);
 		}
 		if (!invalidBackwardDiagonal.contains(space)) {
-			// test bottom-left spaces
+			// test backward diagonal spaces
 			backwardDiagonal = checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
 		}
 		if (!invalidForwardDiagonal.contains(space)) {
-			// test bottom-right spaces
+			// test forward diagonal spaces
 			forwardDiagonal = checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
 		}
 		return below || above || right || left || backwardDiagonal || forwardDiagonal;
