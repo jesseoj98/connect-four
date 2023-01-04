@@ -4,7 +4,7 @@ import com.jesseoj98.connectfour.domain.GameBoard;
 
 public class Validator {
 
-	private boolean connectFour(char[] board, int space) {
+	public boolean connectFour(char[] board, int space) {
 		if (space < 0) {
 			return false;
 		}
