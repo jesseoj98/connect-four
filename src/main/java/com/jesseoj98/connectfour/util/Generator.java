@@ -34,6 +34,7 @@ public class Generator {
 		final List<Integer> invalidPositions = new ArrayList<>();
 		invalidPositions.add(0);
 		invalidPositions.add(1);
+		invalidPositions.add(2);
 		invalidPositions.add(7);
 		invalidPositions.add(8);
 		invalidPositions.add(14);
