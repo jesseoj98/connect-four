@@ -39,11 +39,11 @@ public class Validator {
 		}
 		if (!invalidBackwardDiagonal.contains(space)) {
 			// test backward diagonal spaces
-			backwardDiagonal = checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
+			backwardDiagonal = checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
 		}
 		if (!invalidForwardDiagonal.contains(space)) {
 			// test forward diagonal spaces
-			forwardDiagonal = checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
+			forwardDiagonal = checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
 		}
 		return below || above || right || left || backwardDiagonal || forwardDiagonal;
 	}
