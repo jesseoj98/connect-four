@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.jesseoj98.connectfour.domain.BackwardDiagonal;
 import com.jesseoj98.connectfour.domain.ForwardDiagonal;
@@ -13,6 +14,10 @@ public class Generator {
 
 	public char[] generateGameBoard() {
 		return new char[GameBoard.GAME_BOARD_SPACES];
+	}
+
+	public int generateRandomInput() {
+		return ThreadLocalRandom.current().nextInt(1, GameBoard.GAME_BOARD_X_AXIS + 1);
 	}
 
 	public List<Integer> generateInvalidBackwardDiagonalPositions() {
