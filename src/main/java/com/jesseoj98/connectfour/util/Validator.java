@@ -136,4 +136,8 @@ public class Validator {
 		return input == 'y' || input == 'Y';
 	}
 
+	public boolean isInputPlayingCharacterValid(char input) {
+		return input == 'x' || input == 'X' || input == 'o' || input == 'O';
+	}
+
 }
