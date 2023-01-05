@@ -10,7 +10,7 @@ public class Helper {
 	}
 
 	public boolean isSpaceAlreadyOccupied(char[] board, int space) {
-		return isSpaceAlreadyOccupied(board[space]);
+		return space < 0 ? false : isSpaceAlreadyOccupied(board[space]);
 	}
 
 	public void insertInputIntoBoard(char[] board, int space, char insert) {
