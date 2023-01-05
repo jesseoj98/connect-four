@@ -13,7 +13,7 @@ public class Helper {
 		return isSpaceAlreadyOccupied(board[space]);
 	}
 
-	private void insertInputIntoBoard(char[] board, int space, char insert) {
+	public void insertInputIntoBoard(char[] board, int space, char insert) {
 		board[space] = insert;
 	}
 
