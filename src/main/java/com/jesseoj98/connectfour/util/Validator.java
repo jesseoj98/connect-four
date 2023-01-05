@@ -6,6 +6,7 @@ import java.util.Map;
 import com.jesseoj98.connectfour.domain.BackwardDiagonal;
 import com.jesseoj98.connectfour.domain.ForwardDiagonal;
 import com.jesseoj98.connectfour.domain.GameBoard;
+import com.jesseoj98.connectfour.domain.Result;
 
 public class Validator {
 
@@ -152,6 +153,19 @@ public class Validator {
 			}
 		}
 		return true;
+	}
+
+	public void handleResult(boolean playerWon, boolean cpuWon, char[] gameBoard, char userPlayingCharacter,
+			char cpuPlayingCharacter) {
+		if (!playerWon && !cpuWon) {
+			System.out.println("Tie!");
+		} else {
+			// to-do: get winning positions & print them
+//			final Result result = new Result(playerWon, cpuWon,
+//					retrieveWinningPositions(gameBoard, playerWon ? userPlayingCharacter : cpuPlayingCharacter), null);
+//			printer.printResult(result);
+			System.out.println();
+		}
 	}
 
 }
