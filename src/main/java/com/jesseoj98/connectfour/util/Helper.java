@@ -17,18 +17,16 @@ public class Helper {
 		board[space] = insert;
 	}
 
-	public int insertIntoBoard(char[] board, int column, char insert) {
+	public int retrieveAvailableBoardSpace(char[] board, int column) {
 		int space = adjustValue(column, GameBoard.FLOOR);
 		if (!isSpaceAlreadyOccupied(board, space)) {
-			insertInputIntoBoard(board, space, insert);
+			space = -1;
 		} else {
 			do {
 				space = adjustValue(space, GameBoard.ABOVE);
 			} while (space < 0 || !isSpaceAlreadyOccupied(board, space));
 			if (space < 0 || !isSpaceAlreadyOccupied(board, space)) {
 				System.out.println("Cannot insert, column full!");
-			} else {
-				insertInputIntoBoard(board, space, insert);
 			}
 		}
 		return space;
