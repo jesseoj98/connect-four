@@ -10,6 +10,7 @@ import com.jesseoj98.connectfour.domain.GameBoard;
 public class Validator {
 
 	private static final Generator generator = new Generator();
+	private static final Helper helper = new Helper();
 
 	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
 	private static final List<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
@@ -142,6 +143,15 @@ public class Validator {
 
 	public boolean isInputPlayingCharacterValid(char input) {
 		return input == 'x' || input == 'X' || input == 'o' || input == 'O';
+	}
+
+	public boolean allGameBoardSpacesFilled(char[] gameBoard) {
+		for (int i = 0; i < GameBoard.GAME_BOARD_SPACES; i++) {
+			if (!helper.isSpaceAlreadyOccupied(gameBoard[i])) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
