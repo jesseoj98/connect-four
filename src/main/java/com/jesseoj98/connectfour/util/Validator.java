@@ -132,4 +132,8 @@ public class Validator {
 		return input >= GameBoard.LOWER_BOUND && input <= GameBoard.UPPER_BOUND;
 	}
 
+	public boolean playAgain(char input) {
+		return input == 'y' || input == 'Y';
+	}
+
 }
