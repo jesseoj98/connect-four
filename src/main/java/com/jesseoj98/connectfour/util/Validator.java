@@ -1,7 +1,10 @@
 package com.jesseoj98.connectfour.util;
 
 import java.util.List;
+import java.util.Map;
 
+import com.jesseoj98.connectfour.domain.BackwardDiagonal;
+import com.jesseoj98.connectfour.domain.ForwardDiagonal;
 import com.jesseoj98.connectfour.domain.GameBoard;
 
 public class Validator {
@@ -10,6 +13,11 @@ public class Validator {
 
 	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
 	private static final List<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
+
+	private static final Map<Integer, BackwardDiagonal> backwardDiagonalInformation = generator
+			.generateBackwardDiagonalInformation();
+	private static final Map<Integer, ForwardDiagonal> forwardDiagonalInformation = generator
+			.generateForwardDiagonalInformation();
 
 	public boolean connectFour(char[] board, int space) {
 		if (space < 0) {
@@ -39,11 +47,15 @@ public class Validator {
 		}
 		if (!invalidBackwardDiagonal.contains(space)) {
 			// test backward diagonal spaces
-			backwardDiagonal = checkDirection(board, space, GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
+			backwardDiagonal = checkDirection(board, space, backwardDiagonalInformation.get(space).getMaxBelowRight(),
+					backwardDiagonalInformation.get(space).getMaxAboveLeft(), GameBoard.BELOW_RIGHT,
+					GameBoard.ABOVE_LEFT);
 		}
 		if (!invalidForwardDiagonal.contains(space)) {
 			// test forward diagonal spaces
-			forwardDiagonal = checkDirection(board, space, GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
+			forwardDiagonal = checkDirection(board, space, forwardDiagonalInformation.get(space).getMaxBelowLeft(),
+					forwardDiagonalInformation.get(space).getMaxAboveRight(), GameBoard.BELOW_LEFT,
+					GameBoard.ABOVE_RIGHT);
 		}
 		return below || above || right || left || backwardDiagonal || forwardDiagonal;
 	}
@@ -63,6 +75,27 @@ public class Validator {
 		}
 	}
 
+	private boolean checkDirection(char[] board, int space, int timesBelow, int timesAbove, int direction,
+			int oppositeDirection) {
+		final StringBuilder connectFour = new StringBuilder();
+		int pointer = space;
+		connectFour.append(board[space]);
+		for (int i = 0; i < timesBelow; i++) {
+			pointer += direction;
+			connectFour.append(board[pointer]);
+		}
+		if (connectFour.length() == 4 && connectFour(connectFour.toString())) {
+			return true;
+		} else {
+			pointer = space;
+			for (int i = 0; i < timesAbove; i++) {
+				pointer += oppositeDirection;
+				connectFour.append(board[pointer]);
+			}
+			return connectFour.length() == 4 && connectFour(connectFour.toString());
+		}
+	}
+
 	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
 			String baseString) {
 		final StringBuilder connectFour = new StringBuilder();
@@ -71,6 +104,20 @@ public class Validator {
 			connectFour.append(board[space]);
 		}
 		return connectFour.toString().length() + baseString.length() == 4;
+	}
+
+	private boolean connectFour(String connectFour) {
+		if (connectFour.length() != 4) {
+			return false;
+		}
+		final char[] array = connectFour.toCharArray();
+		final char c = array[0];
+		for (int i = 1; i < array.length; i++) { // connectFour.length()
+			if (!valueMatch(c, array[i])) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private int retrieveAdjacentSpace(int value, int adjustment) {
