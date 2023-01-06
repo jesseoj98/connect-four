@@ -3,10 +3,9 @@ package com.jesseoj98.connectfour.util;
 import java.util.List;
 import java.util.Map;
 
-import com.jesseoj98.connectfour.domain.BackwardDiagonal;
-import com.jesseoj98.connectfour.domain.ForwardDiagonal;
 import com.jesseoj98.connectfour.domain.GameBoard;
 import com.jesseoj98.connectfour.domain.Result;
+import com.jesseoj98.connectfour.domain.SpaceBounds;
 
 public class Validator {
 
@@ -16,9 +15,9 @@ public class Validator {
 	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
 	private static final List<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
 
-	private static final Map<Integer, BackwardDiagonal> backwardDiagonalInformation = generator
+	private static final Map<Integer, SpaceBounds> backwardDiagonalInformation = generator
 			.generateBackwardDiagonalInformation();
-	private static final Map<Integer, ForwardDiagonal> forwardDiagonalInformation = generator
+	private static final Map<Integer, SpaceBounds> forwardDiagonalInformation = generator
 			.generateForwardDiagonalInformation();
 
 	public boolean connectFour(char[] board, int space) {
@@ -49,15 +48,13 @@ public class Validator {
 		}
 		if (!invalidBackwardDiagonal.contains(space)) {
 			// test backward diagonal spaces
-			backwardDiagonal = checkDirection(board, space, backwardDiagonalInformation.get(space).getMaxBelowRight(),
-					backwardDiagonalInformation.get(space).getMaxAboveLeft(), GameBoard.BELOW_RIGHT,
-					GameBoard.ABOVE_LEFT);
+			backwardDiagonal = checkDirection(board, space, backwardDiagonalInformation.get(space).getMaxBelow(),
+					backwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT);
 		}
 		if (!invalidForwardDiagonal.contains(space)) {
 			// test forward diagonal spaces
-			forwardDiagonal = checkDirection(board, space, forwardDiagonalInformation.get(space).getMaxBelowLeft(),
-					forwardDiagonalInformation.get(space).getMaxAboveRight(), GameBoard.BELOW_LEFT,
-					GameBoard.ABOVE_RIGHT);
+			forwardDiagonal = checkDirection(board, space, forwardDiagonalInformation.get(space).getMaxBelow(),
+					forwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
 		}
 		return below || above || right || left || backwardDiagonal || forwardDiagonal;
 	}

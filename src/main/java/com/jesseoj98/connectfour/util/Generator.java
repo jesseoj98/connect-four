@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.jesseoj98.connectfour.domain.BackwardDiagonal;
-import com.jesseoj98.connectfour.domain.ForwardDiagonal;
 import com.jesseoj98.connectfour.domain.GameBoard;
+import com.jesseoj98.connectfour.domain.SpaceBounds;
 
 public class Generator {
 
@@ -54,73 +53,73 @@ public class Generator {
 		return invalidPositions;
 	}
 
-	public Map<Integer, BackwardDiagonal> generateBackwardDiagonalInformation() {
-		final Map<Integer, BackwardDiagonal> diagonals = new HashMap<>();
-		diagonals.put(0, new BackwardDiagonal(0, 3));
-		diagonals.put(1, new BackwardDiagonal(0, 3));
-		diagonals.put(2, new BackwardDiagonal(0, 3));
-		diagonals.put(3, new BackwardDiagonal(0, 3));
-		diagonals.put(7, new BackwardDiagonal(0, 3));
-		diagonals.put(8, new BackwardDiagonal(1, 3));
-		diagonals.put(9, new BackwardDiagonal(1, 3));
-		diagonals.put(10, new BackwardDiagonal(1, 3));
-		diagonals.put(11, new BackwardDiagonal(1, 2));
-		diagonals.put(14, new BackwardDiagonal(0, 3));
-		diagonals.put(15, new BackwardDiagonal(1, 3));
-		diagonals.put(16, new BackwardDiagonal(2, 3));
-		diagonals.put(17, new BackwardDiagonal(2, 3));
-		diagonals.put(18, new BackwardDiagonal(2, 2));
-		diagonals.put(19, new BackwardDiagonal(2, 1));
-		diagonals.put(22, new BackwardDiagonal(1, 2));
-		diagonals.put(23, new BackwardDiagonal(2, 2));
-		diagonals.put(24, new BackwardDiagonal(3, 2));
-		diagonals.put(25, new BackwardDiagonal(3, 2));
-		diagonals.put(26, new BackwardDiagonal(3, 1));
-		diagonals.put(27, new BackwardDiagonal(3, 0));
-		diagonals.put(30, new BackwardDiagonal(2, 1));
-		diagonals.put(31, new BackwardDiagonal(3, 1));
-		diagonals.put(32, new BackwardDiagonal(3, 1));
-		diagonals.put(33, new BackwardDiagonal(3, 1));
-		diagonals.put(34, new BackwardDiagonal(3, 0));
-		diagonals.put(38, new BackwardDiagonal(3, 0));
-		diagonals.put(39, new BackwardDiagonal(3, 0));
-		diagonals.put(40, new BackwardDiagonal(3, 0));
-		diagonals.put(41, new BackwardDiagonal(3, 0));
+	public Map<Integer, SpaceBounds> generateBackwardDiagonalInformation() {
+		final Map<Integer, SpaceBounds> diagonals = new HashMap<>();
+		diagonals.put(0, new SpaceBounds(0, 3));
+		diagonals.put(1, new SpaceBounds(0, 3));
+		diagonals.put(2, new SpaceBounds(0, 3));
+		diagonals.put(3, new SpaceBounds(0, 3));
+		diagonals.put(7, new SpaceBounds(0, 3));
+		diagonals.put(8, new SpaceBounds(1, 3));
+		diagonals.put(9, new SpaceBounds(1, 3));
+		diagonals.put(10, new SpaceBounds(1, 3));
+		diagonals.put(11, new SpaceBounds(1, 2));
+		diagonals.put(14, new SpaceBounds(0, 3));
+		diagonals.put(15, new SpaceBounds(1, 3));
+		diagonals.put(16, new SpaceBounds(2, 3));
+		diagonals.put(17, new SpaceBounds(2, 3));
+		diagonals.put(18, new SpaceBounds(2, 2));
+		diagonals.put(19, new SpaceBounds(2, 1));
+		diagonals.put(22, new SpaceBounds(1, 2));
+		diagonals.put(23, new SpaceBounds(2, 2));
+		diagonals.put(24, new SpaceBounds(3, 2));
+		diagonals.put(25, new SpaceBounds(3, 2));
+		diagonals.put(26, new SpaceBounds(3, 1));
+		diagonals.put(27, new SpaceBounds(3, 0));
+		diagonals.put(30, new SpaceBounds(2, 1));
+		diagonals.put(31, new SpaceBounds(3, 1));
+		diagonals.put(32, new SpaceBounds(3, 1));
+		diagonals.put(33, new SpaceBounds(3, 1));
+		diagonals.put(34, new SpaceBounds(3, 0));
+		diagonals.put(38, new SpaceBounds(3, 0));
+		diagonals.put(39, new SpaceBounds(3, 0));
+		diagonals.put(40, new SpaceBounds(3, 0));
+		diagonals.put(41, new SpaceBounds(3, 0));
 		return diagonals;
 	}
 
-	public Map<Integer, ForwardDiagonal> generateForwardDiagonalInformation() {
-		final Map<Integer, ForwardDiagonal> diagonals = new HashMap<>();
-		diagonals.put(3, new ForwardDiagonal(0, 3));
-		diagonals.put(4, new ForwardDiagonal(0, 3));
-		diagonals.put(5, new ForwardDiagonal(0, 3));
-		diagonals.put(6, new ForwardDiagonal(0, 3));
-		diagonals.put(9, new ForwardDiagonal(1, 2));
-		diagonals.put(10, new ForwardDiagonal(1, 3));
-		diagonals.put(11, new ForwardDiagonal(1, 3));
-		diagonals.put(12, new ForwardDiagonal(1, 3));
-		diagonals.put(13, new ForwardDiagonal(0, 3));
-		diagonals.put(15, new ForwardDiagonal(2, 1));
-		diagonals.put(16, new ForwardDiagonal(2, 3));
-		diagonals.put(17, new ForwardDiagonal(2, 3));
-		diagonals.put(18, new ForwardDiagonal(2, 3));
-		diagonals.put(19, new ForwardDiagonal(1, 3));
-		diagonals.put(20, new ForwardDiagonal(0, 3));
-		diagonals.put(21, new ForwardDiagonal(3, 0));
-		diagonals.put(22, new ForwardDiagonal(3, 1));
-		diagonals.put(23, new ForwardDiagonal(3, 2));
-		diagonals.put(24, new ForwardDiagonal(3, 2));
-		diagonals.put(25, new ForwardDiagonal(2, 2));
-		diagonals.put(26, new ForwardDiagonal(1, 2));
-		diagonals.put(28, new ForwardDiagonal(0, 3));
-		diagonals.put(29, new ForwardDiagonal(3, 1));
-		diagonals.put(30, new ForwardDiagonal(3, 1));
-		diagonals.put(31, new ForwardDiagonal(3, 1));
-		diagonals.put(32, new ForwardDiagonal(2, 1));
-		diagonals.put(35, new ForwardDiagonal(3, 0));
-		diagonals.put(36, new ForwardDiagonal(3, 0));
-		diagonals.put(37, new ForwardDiagonal(3, 0));
-		diagonals.put(38, new ForwardDiagonal(3, 0));
+	public Map<Integer, SpaceBounds> generateForwardDiagonalInformation() {
+		final Map<Integer, SpaceBounds> diagonals = new HashMap<>();
+		diagonals.put(3, new SpaceBounds(0, 3));
+		diagonals.put(4, new SpaceBounds(0, 3));
+		diagonals.put(5, new SpaceBounds(0, 3));
+		diagonals.put(6, new SpaceBounds(0, 3));
+		diagonals.put(9, new SpaceBounds(1, 2));
+		diagonals.put(10, new SpaceBounds(1, 3));
+		diagonals.put(11, new SpaceBounds(1, 3));
+		diagonals.put(12, new SpaceBounds(1, 3));
+		diagonals.put(13, new SpaceBounds(0, 3));
+		diagonals.put(15, new SpaceBounds(2, 1));
+		diagonals.put(16, new SpaceBounds(2, 3));
+		diagonals.put(17, new SpaceBounds(2, 3));
+		diagonals.put(18, new SpaceBounds(2, 3));
+		diagonals.put(19, new SpaceBounds(1, 3));
+		diagonals.put(20, new SpaceBounds(0, 3));
+		diagonals.put(21, new SpaceBounds(3, 0));
+		diagonals.put(22, new SpaceBounds(3, 1));
+		diagonals.put(23, new SpaceBounds(3, 2));
+		diagonals.put(24, new SpaceBounds(3, 2));
+		diagonals.put(25, new SpaceBounds(2, 2));
+		diagonals.put(26, new SpaceBounds(1, 2));
+		diagonals.put(28, new SpaceBounds(0, 3));
+		diagonals.put(29, new SpaceBounds(3, 1));
+		diagonals.put(30, new SpaceBounds(3, 1));
+		diagonals.put(31, new SpaceBounds(3, 1));
+		diagonals.put(32, new SpaceBounds(2, 1));
+		diagonals.put(35, new SpaceBounds(3, 0));
+		diagonals.put(36, new SpaceBounds(3, 0));
+		diagonals.put(37, new SpaceBounds(3, 0));
+		diagonals.put(38, new SpaceBounds(3, 0));
 		return diagonals;
 	}
 
