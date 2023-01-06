@@ -50,6 +50,7 @@ public class Game {
 
 		int userInput;
 		int cpuInput;
+		int insertionPoint;
 
 		final char[] gameBoard = generator.generateGameBoard();
 
@@ -71,10 +72,10 @@ public class Game {
 			} while (!validator.isInputValid(userInput) && helper.isSpaceAlreadyOccupied(gameBoard,
 					helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)));
 
-			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1),
-					userPlayingCharacter);
+			insertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1);
+			helper.insertInputIntoBoard(gameBoard, insertionPoint, userPlayingCharacter);
 
-			if (validator.connectFour(gameBoard, userInput - 1) || validator.allGameBoardSpacesFilled(gameBoard)) {
+			if (validator.connectFour(gameBoard, insertionPoint) || validator.allGameBoardSpacesFilled(gameBoard)) {
 				break;
 			}
 
@@ -83,13 +84,13 @@ public class Game {
 			} while (helper.isSpaceAlreadyOccupied(gameBoard,
 					helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1)));
 
-			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1),
-					cpuPlayingCharacter);
+			insertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1);
+			helper.insertInputIntoBoard(gameBoard, insertionPoint, cpuPlayingCharacter);
 
 			System.out.println();
 			printer.printGameBoard(gameBoard);
 
-		} while (!validator.connectFour(gameBoard, cpuInput - 1) && !validator.allGameBoardSpacesFilled(gameBoard));
+		} while (!validator.connectFour(gameBoard, insertionPoint) && !validator.allGameBoardSpacesFilled(gameBoard));
 
 		// to-do: handle the result of the game
 //		System.out.println();
