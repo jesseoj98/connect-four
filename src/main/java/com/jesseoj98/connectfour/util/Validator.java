@@ -64,28 +64,30 @@ public class Validator {
 
 	private boolean checkDirection(char[] board, int space, int direction, int oppositeDirection) {
 		final StringBuilder connectFour = new StringBuilder();
+		connectFour.append(board[space]);
 		int pointer = space;
 		do {
-			connectFour.append(board[pointer]);
 			pointer = pointer + direction;
+			connectFour.append(board[pointer]);
 		} while (board[space] == board[pointer]);
 		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
 		if (baseString.length() == 4) {
 			return true;
-		} else {
-			return checkOppositeDirection(board, oppositeDirection, 4 - baseString.length(), space, baseString);
 		}
+		return checkOppositeDirection(board, oppositeDirection, 4 - baseString.length(), space, baseString);
 	}
 
 	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
 			String baseString) {
 		final StringBuilder connectFour = new StringBuilder();
+		int pointer = space;
 		for (int i = 0; i < times; i++) {
-			space = space + oppositeDirection;
-			if (space < 0) {
+			pointer = pointer + oppositeDirection;
+			if (board[space] == board[pointer]) {
+				connectFour.append(board[pointer]);
+			} else {
 				break;
 			}
-			connectFour.append(board[space]);
 		}
 		return connectFour.toString().length() + baseString.length() == 4;
 	}
