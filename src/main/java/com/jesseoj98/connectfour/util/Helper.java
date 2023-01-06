@@ -22,10 +22,11 @@ public class Helper {
 		if (isSpaceAlreadyOccupied(board, space)) {
 			do {
 				space = adjustValue(space, GameBoard.ABOVE);
-			} while (space < 0 || !isSpaceAlreadyOccupied(board, space));
-			if (space < 0 || !isSpaceAlreadyOccupied(board, space)) {
-				System.out.println("Cannot insert, column full!");
-			}
+				if (space < 0) {
+					System.out.println("Cannot insert, column full!");
+					break;
+				}
+			} while (isSpaceAlreadyOccupied(board, space));
 		}
 		return space;
 	}
