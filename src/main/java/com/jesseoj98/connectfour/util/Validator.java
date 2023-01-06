@@ -103,23 +103,19 @@ public class Validator {
 		}
 		if (connectFour.length() == 4 && connectFour(connectFour.toString())) {
 			return true;
-		} else {
-			pointer = space;
-			for (int i = 0; i < timesAbove; i++) {
-				pointer += oppositeDirection;
-				connectFour.append(board[pointer]);
-			}
-			return connectFour.length() == 4 && connectFour(connectFour.toString());
 		}
+		pointer = space;
+		for (int i = 0; i < timesAbove; i++) {
+			pointer += oppositeDirection;
+			connectFour.append(board[pointer]);
+		}
+		return connectFour.length() == 4 && connectFour(connectFour.toString());
 	}
 
 	private boolean connectFour(String connectFour) {
-		if (connectFour.length() != 4) {
-			return false;
-		}
 		final char[] array = connectFour.toCharArray();
 		final char c = array[0];
-		for (int i = 1; i < array.length; i++) { // connectFour.length()
+		for (int i = 1; i < array.length; i++) {
 			if (c != array[i]) {
 				return false;
 			}
