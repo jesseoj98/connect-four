@@ -101,7 +101,7 @@ public class Validator {
 			pointer += direction;
 			connectFour.append(board[pointer]);
 		}
-		if (connectFour.length() == 4 && connectFour(connectFour.toString())) {
+		if (connectFour(connectFour.toString())) {
 			return true;
 		}
 		pointer = space;
@@ -109,10 +109,13 @@ public class Validator {
 			pointer += oppositeDirection;
 			connectFour.append(board[pointer]);
 		}
-		return connectFour.length() == 4 && connectFour(connectFour.toString());
+		return connectFour(connectFour.toString());
 	}
 
 	private boolean connectFour(String connectFour) {
+		if (connectFour.length() != 4) {
+			return false;
+		}
 		final char[] array = connectFour.toCharArray();
 		final char c = array[0];
 		for (int i = 1; i < array.length; i++) {
