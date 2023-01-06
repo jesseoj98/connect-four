@@ -77,6 +77,19 @@ public class Validator {
 		}
 	}
 
+	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
+			String baseString) {
+		final StringBuilder connectFour = new StringBuilder();
+		for (int i = 0; i < times; i++) {
+			space = space + oppositeDirection;
+			if (space < 0) {
+				break;
+			}
+			connectFour.append(board[space]);
+		}
+		return connectFour.toString().length() + baseString.length() == 4;
+	}
+
 	private boolean checkDirection(char[] board, int space, int timesBelow, int timesAbove, int direction,
 			int oppositeDirection) {
 		final StringBuilder connectFour = new StringBuilder();
@@ -96,19 +109,6 @@ public class Validator {
 			}
 			return connectFour.length() == 4 && connectFour(connectFour.toString());
 		}
-	}
-
-	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
-			String baseString) {
-		final StringBuilder connectFour = new StringBuilder();
-		for (int i = 0; i < times; i++) {
-			space = space + oppositeDirection;
-			if (space < 0) {
-				break;
-			}
-			connectFour.append(board[space]);
-		}
-		return connectFour.toString().length() + baseString.length() == 4;
 	}
 
 	private boolean connectFour(String connectFour) {
