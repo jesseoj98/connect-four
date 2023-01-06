@@ -74,7 +74,7 @@ public class Game {
 			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInputSimple - 1),
 					userPlayingCharacter);
 
-			if (validator.connectFour(gameBoard, userPlayingCharacter)
+			if (validator.connectFour(gameBoard, userInputSimple - 1)
 					|| validator.allGameBoardSpacesFilled(gameBoard)) {
 				break;
 			}
@@ -90,7 +90,7 @@ public class Game {
 			System.out.println();
 			printer.printGameBoard(gameBoard);
 
-		} while (!validator.connectFour(gameBoard, cpuPlayingCharacter)
+		} while (!validator.connectFour(gameBoard, cpuInputSimple - 1)
 				&& !validator.allGameBoardSpacesFilled(gameBoard));
 
 		// to-do: handle the result of the game
