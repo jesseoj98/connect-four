@@ -67,7 +67,7 @@ public class Validator {
 		connectFour.append(board[space]);
 		int pointer = space;
 		do {
-			pointer = pointer + direction;
+			pointer += direction;
 			connectFour.append(board[pointer]);
 		} while (board[space] == board[pointer]);
 		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
@@ -82,7 +82,7 @@ public class Validator {
 		final StringBuilder connectFour = new StringBuilder();
 		int pointer = space;
 		for (int i = 0; i < times; i++) {
-			pointer = pointer + oppositeDirection;
+			pointer += oppositeDirection;
 			if (board[space] == board[pointer]) {
 				connectFour.append(board[pointer]);
 			} else {
