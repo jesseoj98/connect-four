@@ -99,28 +99,25 @@ public class Validator {
 		connectFour.append(board[space]);
 		for (int i = 0; i < timesBelow; i++) {
 			pointer += direction;
-			connectFour.append(board[pointer]);
+			if (board[space] == board[pointer]) {
+				connectFour.append(board[pointer]);
+			} else {
+				break;
+			}
 		}
-		if (connectFour(connectFour.toString())) {
+		if (connectFour.toString().length() == 4) {
 			return true;
 		}
 		pointer = space;
 		for (int i = 0; i < timesAbove; i++) {
 			pointer += oppositeDirection;
-			connectFour.append(board[pointer]);
-		}
-		return connectFour(connectFour.toString());
-	}
-
-	private boolean connectFour(String connectFour) {
-		final char[] array = connectFour.toCharArray();
-		final char c = array[0];
-		for (int i = 1; i < array.length; i++) {
-			if (c != array[i]) {
-				return false;
+			if (board[space] == board[pointer]) {
+				connectFour.append(board[pointer]);
+			} else {
+				break;
 			}
 		}
-		return true;
+		return connectFour.toString().length() == 4;
 	}
 
 	public boolean allGameBoardSpacesFilled(char[] gameBoard) {
