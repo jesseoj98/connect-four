@@ -55,7 +55,8 @@ public class Game {
 
 		if (letCpuGoFirst) {
 			final int cpuFirstPlay = generator.generateRandomInput();
-			helper.insertInputIntoBoard(gameBoard, cpuFirstPlay - 1, cpuPlayingCharacter);
+			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, cpuFirstPlay - 1),
+					cpuPlayingCharacter);
 		}
 
 		System.out.println();
