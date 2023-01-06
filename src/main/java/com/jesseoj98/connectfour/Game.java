@@ -48,8 +48,8 @@ public class Game {
 
 	private void playGame(char userPlayingCharacter, char cpuPlayingCharacter, boolean letCpuGoFirst) {
 
-		int userInputSimple;
-		int cpuInputSimple;
+		int userInput;
+		int cpuInput;
 
 		final char[] gameBoard = generator.generateGameBoard();
 
@@ -67,31 +67,29 @@ public class Game {
 			System.out.print("\nEnter a spot to place your move: ");
 
 			do {
-				userInputSimple = scanner.nextInt();
-			} while (!validator.isInputValid(userInputSimple) && helper.isSpaceAlreadyOccupied(gameBoard,
-					helper.retrieveAvailableBoardSpace(gameBoard, userInputSimple - 1)));
+				userInput = scanner.nextInt();
+			} while (!validator.isInputValid(userInput) && helper.isSpaceAlreadyOccupied(gameBoard,
+					helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)));
 
-			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInputSimple - 1),
+			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1),
 					userPlayingCharacter);
 
-			if (validator.connectFour(gameBoard, userInputSimple - 1)
-					|| validator.allGameBoardSpacesFilled(gameBoard)) {
+			if (validator.connectFour(gameBoard, userInput - 1) || validator.allGameBoardSpacesFilled(gameBoard)) {
 				break;
 			}
 
 			do {
-				cpuInputSimple = generator.generateRandomInput();
+				cpuInput = generator.generateRandomInput();
 			} while (helper.isSpaceAlreadyOccupied(gameBoard,
-					helper.retrieveAvailableBoardSpace(gameBoard, cpuInputSimple - 1)));
+					helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1)));
 
-			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, cpuInputSimple - 1),
+			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1),
 					cpuPlayingCharacter);
 
 			System.out.println();
 			printer.printGameBoard(gameBoard);
 
-		} while (!validator.connectFour(gameBoard, cpuInputSimple - 1)
-				&& !validator.allGameBoardSpacesFilled(gameBoard));
+		} while (!validator.connectFour(gameBoard, cpuInput - 1) && !validator.allGameBoardSpacesFilled(gameBoard));
 
 		// to-do: handle the result of the game
 //		System.out.println();
