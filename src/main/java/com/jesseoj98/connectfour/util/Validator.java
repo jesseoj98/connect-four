@@ -103,6 +103,9 @@ public class Validator {
 		final StringBuilder connectFour = new StringBuilder();
 		for (int i = 0; i < times; i++) {
 			space = retrieveAdjacentSpace(space, oppositeDirection);
+			if (space < 0) {
+				break;
+			}
 			connectFour.append(board[space]);
 		}
 		return connectFour.toString().length() + baseString.length() == 4;
