@@ -113,9 +113,6 @@ public class Validator {
 	}
 
 	private boolean connectFour(String connectFour) {
-		if (connectFour.length() != 4) {
-			return false;
-		}
 		final char[] array = connectFour.toCharArray();
 		final char c = array[0];
 		for (int i = 1; i < array.length; i++) {
