@@ -80,6 +80,15 @@ public class Validator {
 	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
 			String baseString) {
 		final StringBuilder connectFour = new StringBuilder();
+		int failSafe = space;
+		for (int i = 0; i < times; i++) {
+			failSafe += oppositeDirection;
+		}
+		if (failSafe > 41 || failSafe < 0) {
+			// the amount of times needed to complete the
+			// string exceeds the bounds of the game board
+			return false;
+		}
 		int pointer = space;
 		for (int i = 0; i < times; i++) {
 			pointer += oppositeDirection;
