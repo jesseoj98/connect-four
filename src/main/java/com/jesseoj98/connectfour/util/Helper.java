@@ -19,9 +19,7 @@ public class Helper {
 
 	public int retrieveAvailableBoardSpace(char[] board, int column) {
 		int space = adjustValue(column, GameBoard.FLOOR);
-		if (!isSpaceAlreadyOccupied(board, space)) {
-			space = -1;
-		} else {
+		if (isSpaceAlreadyOccupied(board, space)) {
 			do {
 				space = adjustValue(space, GameBoard.ABOVE);
 			} while (space < 0 || !isSpaceAlreadyOccupied(board, space));
