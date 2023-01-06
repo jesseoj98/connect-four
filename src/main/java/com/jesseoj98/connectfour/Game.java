@@ -2,6 +2,7 @@ package com.jesseoj98.connectfour;
 
 import java.util.Scanner;
 
+import com.jesseoj98.connectfour.domain.GameBoard;
 import com.jesseoj98.connectfour.util.Generator;
 import com.jesseoj98.connectfour.util.Helper;
 import com.jesseoj98.connectfour.util.Printer;
@@ -27,7 +28,7 @@ public class Game {
 
 		do {
 			userInput = scanner.next().charAt(0);
-		} while (!validator.isInputPlayingCharacterValid(userInput));
+		} while (!(userInput == 'x' || userInput == 'X' || userInput == 'o' || userInput == 'O'));
 
 		userPlayingCharacter = Character.toUpperCase(userInput);
 
@@ -37,9 +38,9 @@ public class Game {
 
 		do {
 			userInput = scanner.next().charAt(0);
-		} while (!validator.isInputValid(userInput));
+		} while (!(userInput == 'y' || userInput == 'Y' || userInput == 'n' || userInput == 'N'));
 
-		letCpuGoFirst = validator.letCpuGoFirst(userInput);
+		letCpuGoFirst = userInput == 'y' || userInput == 'Y';
 
 		playGame(userPlayingCharacter, cpuPlayingCharacter, letCpuGoFirst);
 
@@ -69,8 +70,8 @@ public class Game {
 
 			do {
 				userInput = scanner.nextInt();
-			} while (!validator.isInputValid(userInput) && helper.isSpaceAlreadyOccupied(gameBoard,
-					helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)));
+			} while (!(userInput >= GameBoard.LOWER_BOUND && userInput <= GameBoard.UPPER_BOUND) && helper
+					.isSpaceAlreadyOccupied(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)));
 
 			insertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1);
 			helper.insertInputIntoBoard(gameBoard, insertionPoint, userPlayingCharacter);

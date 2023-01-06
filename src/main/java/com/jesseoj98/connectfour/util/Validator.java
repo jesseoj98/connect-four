@@ -67,8 +67,8 @@ public class Validator {
 		int pointer = space;
 		do {
 			connectFour.append(board[pointer]);
-			pointer = retrieveAdjacentSpace(pointer, direction);
-		} while (valueMatch(board[space], board[pointer]));
+			pointer = pointer + direction;
+		} while (board[space] == board[pointer]);
 		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
 		if (baseString.length() == 4) {
 			return true;
@@ -102,7 +102,7 @@ public class Validator {
 			String baseString) {
 		final StringBuilder connectFour = new StringBuilder();
 		for (int i = 0; i < times; i++) {
-			space = retrieveAdjacentSpace(space, oppositeDirection);
+			space = space + oppositeDirection;
 			if (space < 0) {
 				break;
 			}
@@ -118,39 +118,11 @@ public class Validator {
 		final char[] array = connectFour.toCharArray();
 		final char c = array[0];
 		for (int i = 1; i < array.length; i++) { // connectFour.length()
-			if (!valueMatch(c, array[i])) {
+			if (c != array[i]) {
 				return false;
 			}
 		}
 		return true;
-	}
-
-	private int retrieveAdjacentSpace(int value, int adjustment) {
-		return value + adjustment;
-	}
-
-	private boolean valueMatch(char insert, char adjacentValue) {
-		return insert == adjacentValue;
-	}
-
-	public boolean isInputValid(int input) {
-		return input >= GameBoard.LOWER_BOUND && input <= GameBoard.UPPER_BOUND;
-	}
-
-	public boolean playAgain(char input) {
-		return input == 'y' || input == 'Y';
-	}
-
-	public boolean letCpuGoFirst(char input) {
-		return input == 'y' || input == 'Y';
-	}
-
-	public boolean isInputValid(char input) {
-		return input == 'y' || input == 'Y' || input == 'n' || input == 'N';
-	}
-
-	public boolean isInputPlayingCharacterValid(char input) {
-		return input == 'x' || input == 'X' || input == 'o' || input == 'O';
 	}
 
 	public boolean allGameBoardSpacesFilled(char[] gameBoard) {

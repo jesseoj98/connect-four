@@ -2,13 +2,10 @@ package com.jesseoj98.connectfour;
 
 import java.util.Scanner;
 
-import com.jesseoj98.connectfour.util.Validator;
-
 public class ConnectFour {
 
 	private static final Game game = new Game();
 	private static final Scanner scanner = new Scanner(System.in);
-	private static final Validator validator = new Validator();
 
 	public static void main(String[] args) {
 
@@ -20,11 +17,11 @@ public class ConnectFour {
 
 			do {
 				playAgain = scanner.next().charAt(0);
-			} while (!validator.isInputValid(playAgain));
+			} while (!(playAgain == 'y' || playAgain == 'Y' || playAgain == 'n' || playAgain == 'N'));
 
 			System.out.println();
 
-		} while (validator.playAgain(playAgain));
+		} while (playAgain == 'y' || playAgain == 'Y');
 
 		System.out.println("Thanks for playing!");
 	}

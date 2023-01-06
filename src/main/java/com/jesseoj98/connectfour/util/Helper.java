@@ -18,10 +18,10 @@ public class Helper {
 	}
 
 	public int retrieveAvailableBoardSpace(char[] board, int column) {
-		int space = adjustValue(column, GameBoard.FLOOR);
+		int space = column + GameBoard.FLOOR;
 		if (isSpaceAlreadyOccupied(board, space)) {
 			do {
-				space = adjustValue(space, GameBoard.ABOVE);
+				space = space + GameBoard.ABOVE;
 				if (space < 0) {
 					System.out.println("Cannot insert, column full!");
 					break;
@@ -29,10 +29,6 @@ public class Helper {
 			} while (isSpaceAlreadyOccupied(board, space));
 		}
 		return space;
-	}
-
-	private int adjustValue(int value, int adjustment) {
-		return value + adjustment;
 	}
 
 }
