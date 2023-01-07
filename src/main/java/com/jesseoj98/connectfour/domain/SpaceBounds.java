@@ -67,7 +67,7 @@ public final class SpaceBounds {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("SpaceBound [maxAbove=");
+		builder.append("SpaceBounds [maxAbove=");
 		builder.append(maxAbove);
 		builder.append(", maxBelow=");
 		builder.append(maxBelow);
