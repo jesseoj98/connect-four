@@ -29,7 +29,7 @@ public class Helper {
 	 * @return whether the space is already occupied or not
 	 */
 	public boolean isSpaceAlreadyOccupied(char[] board, int space) {
-		return space < 0 ? false : isSpaceAlreadyOccupied(board[space]);
+		return isSpaceAlreadyOccupied(board[space]);
 	}
 
 	/**
