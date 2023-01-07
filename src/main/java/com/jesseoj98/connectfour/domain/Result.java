@@ -21,7 +21,7 @@ public final class Result {
 	/**
 	 * The winning spaces
 	 */
-	private final List<Integer> winningSpaces;
+	private final List<List<Integer>> winningSpaces;
 
 	/**
 	 * Constructor to build the object
@@ -30,7 +30,7 @@ public final class Result {
 	 * @param playerWon     the player won to set
 	 * @param winningSpaces the winning spaces to set
 	 */
-	public Result(boolean cpuWon, boolean playerWon, List<Integer> winningSpaces) {
+	public Result(boolean cpuWon, boolean playerWon, List<List<Integer>> winningSpaces) {
 		this.cpuWon = cpuWon;
 		this.playerWon = playerWon;
 		this.winningSpaces = winningSpaces;
@@ -59,7 +59,7 @@ public final class Result {
 	 * 
 	 * @return the winning spaces
 	 */
-	public List<Integer> getWinningSpaces() {
+	public List<List<Integer>> getWinningSpaces() {
 		return winningSpaces;
 	}
 

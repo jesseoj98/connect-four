@@ -65,7 +65,10 @@ public class Game {
 
 		int userInput;
 		int cpuInput;
-		int insertionPoint;
+		int userInsertionPoint;
+		// it's not possible to break out of the game early without this
+		// getting initialized at least once but Java still wants this initialized
+		int cpuInsertionPoint = 0;
 
 		final char[] gameBoard = generator.generateGameBoard();
 
@@ -87,10 +90,10 @@ public class Game {
 			} while (!(userInput >= GameBoard.LOWER_BOUND && userInput <= GameBoard.UPPER_BOUND) && helper
 					.isSpaceAlreadyOccupied(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)));
 
-			insertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1);
-			helper.insertInputIntoBoard(gameBoard, insertionPoint, userPlayingCharacter);
+			userInsertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1);
+			helper.insertInputIntoBoard(gameBoard, userInsertionPoint, userPlayingCharacter);
 
-			if (validator.connectFour(gameBoard, insertionPoint) || validator.allGameBoardSpacesFilled(gameBoard)) {
+			if (validator.connectFour(gameBoard, userInsertionPoint) || validator.allGameBoardSpacesFilled(gameBoard)) {
 				break;
 			}
 
@@ -99,23 +102,23 @@ public class Game {
 			} while (helper.isSpaceAlreadyOccupied(gameBoard,
 					helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1)));
 
-			insertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1);
-			helper.insertInputIntoBoard(gameBoard, insertionPoint, cpuPlayingCharacter);
+			cpuInsertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1);
+			helper.insertInputIntoBoard(gameBoard, cpuInsertionPoint, cpuPlayingCharacter);
 
 			System.out.println();
 			printer.printGameBoard(gameBoard);
 
-		} while (!validator.connectFour(gameBoard, insertionPoint) && !validator.allGameBoardSpacesFilled(gameBoard));
+		} while (!validator.connectFour(gameBoard, cpuInsertionPoint)
+				&& !validator.allGameBoardSpacesFilled(gameBoard));
 
-		// to-do: handle the result of the game
-//		System.out.println();
-//		printer.printGameBoard(gameBoard);
-//
-//		final boolean playerWon = validator.connectFour(gameBoard, userPlayingCharacter);
-//		final boolean cpuWon = validator.connectFour(gameBoard, cpuPlayingCharacter);
-//
-//		System.out.println();
-//		validator.handleResult(playerWon, cpuWon, gameBoard, userPlayingCharacter, cpuPlayingCharacter);
+		System.out.println();
+		printer.printGameBoard(gameBoard);
+
+		final boolean playerWon = validator.connectFour(gameBoard, userInsertionPoint);
+		final boolean cpuWon = validator.connectFour(gameBoard, cpuInsertionPoint);
+
+		System.out.println();
+		validator.handleResult(playerWon, cpuWon, gameBoard, userPlayingCharacter, cpuPlayingCharacter, userInsertionPoint, cpuInsertionPoint);
 
 	}
 

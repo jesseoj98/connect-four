@@ -1,5 +1,6 @@
 package com.jesseoj98.connectfour.util;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ public class Validator {
 	/** Instantiation of classes */
 	private static final Generator generator = new Generator();
 	private static final Helper helper = new Helper();
+	private static final Printer printer = new Printer();
 
 	/** Instantation of constants */
 	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
@@ -103,6 +105,43 @@ public class Validator {
 	}
 
 	/**
+	 * Retrieves the winning positions
+	 * 
+	 * @param board             the board to get the positions off of
+	 * @param space             the space where the win occurs
+	 * @param timesBelow        the times to check below
+	 * @param timesAbove        the times to check above
+	 * @param direction         the direction to check
+	 * @param oppositeDirection the opposite direction
+	 * 
+	 * @return the list of winning positions
+	 */
+	private List<Integer> retrievePositions(char[] board, int space, int timesBelow, int timesAbove, int direction,
+			int oppositeDirection) {
+		final List<Integer> connectFour = new ArrayList<>();
+		int pointer = space;
+		connectFour.add(space);
+		for (int i = 0; i < timesBelow; i++) {
+			pointer += direction;
+			if (board[space] == board[pointer]) {
+				connectFour.add(pointer);
+			} else {
+				break;
+			}
+		}
+		pointer = space;
+		for (int i = 0; i < timesAbove; i++) {
+			pointer += oppositeDirection;
+			if (board[space] == board[pointer]) {
+				connectFour.add(pointer);
+			} else {
+				break;
+			}
+		}
+		return connectFour;
+	}
+
+	/**
 	 * Checks whether all game board spaces are filled
 	 * 
 	 * @param gameBoard the game board to check
@@ -119,9 +158,7 @@ public class Validator {
 	}
 
 	/**
-	 * to-do: finish method
-	 * 
-	 * Handles result of the game
+	 * Handles the result of the game
 	 * 
 	 * @param playerWon            whether the player won
 	 * @param cpuWon               whether the cpu won
@@ -130,16 +167,51 @@ public class Validator {
 	 * @param cpuPlayingCharacter  the cpu playing character
 	 */
 	public void handleResult(boolean playerWon, boolean cpuWon, char[] gameBoard, char userPlayingCharacter,
-			char cpuPlayingCharacter) {
+			char cpuPlayingCharacter, int userInsertionPoint, int cpuInsertionPoint) {
 		if (!playerWon && !cpuWon) {
 			System.out.println("Tie!");
 		} else {
-			// to-do: get winning positions & print them
-//			final Result result = new Result(playerWon, cpuWon,
-//					retrieveWinningPositions(gameBoard, playerWon ? userPlayingCharacter : cpuPlayingCharacter), null);
-//			printer.printResult(result);
+			final Result result = new Result(cpuWon, playerWon,
+					retrieveWinningPositions(gameBoard, playerWon ? userInsertionPoint : cpuInsertionPoint));
+			printer.printResult(result);
 			System.out.println();
 		}
+	}
+
+	/**
+	 * Retrieves the winning positions by checking the winning spaces insertion
+	 * point
+	 * 
+	 * @param board the board to get the winning positions off of
+	 * @param space the space where the winning positions occurs
+	 * 
+	 * @return a list of a list of winning positions
+	 */
+	private List<List<Integer>> retrieveWinningPositions(char[] board, int space) {
+		final List<List<Integer>> winningPositions = new ArrayList<>();
+		if (checkDirection(board, space, horizontalInformation.get(space).getMaxBelow(),
+				horizontalInformation.get(space).getMaxAbove(), GameBoard.RIGHT, GameBoard.LEFT)) {
+			winningPositions.add(retrievePositions(board, space, horizontalInformation.get(space).getMaxBelow(),
+					horizontalInformation.get(space).getMaxAbove(), GameBoard.RIGHT, GameBoard.LEFT));
+		}
+		if (checkDirection(board, space, verticalInformation.get(space).getMaxBelow(),
+				verticalInformation.get(space).getMaxAbove(), GameBoard.BELOW, GameBoard.ABOVE)) {
+			winningPositions.add(retrievePositions(board, space, verticalInformation.get(space).getMaxBelow(),
+					verticalInformation.get(space).getMaxAbove(), GameBoard.BELOW, GameBoard.ABOVE));
+		}
+		if (!invalidBackwardDiagonal.contains(space) && checkDirection(board, space,
+				backwardDiagonalInformation.get(space).getMaxBelow(),
+				backwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT)) {
+			winningPositions.add(retrievePositions(board, space, backwardDiagonalInformation.get(space).getMaxBelow(),
+					backwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_RIGHT, GameBoard.ABOVE_LEFT));
+		}
+		if (!invalidForwardDiagonal.contains(space) && checkDirection(board, space,
+				forwardDiagonalInformation.get(space).getMaxBelow(),
+				forwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT)) {
+			winningPositions.add(retrievePositions(board, space, forwardDiagonalInformation.get(space).getMaxBelow(),
+					forwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT));
+		}
+		return winningPositions;
 	}
 
 }
