@@ -15,6 +15,8 @@ public class Validator {
 	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
 	private static final List<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
 
+	private static final Map<Integer, SpaceBounds> horizontalInformation = generator.generateHorizontalInformation();
+	private static final Map<Integer, SpaceBounds> verticalInformation = generator.generateVerticalInformation();
 	private static final Map<Integer, SpaceBounds> backwardDiagonalInformation = generator
 			.generateBackwardDiagonalInformation();
 	private static final Map<Integer, SpaceBounds> forwardDiagonalInformation = generator
@@ -24,28 +26,16 @@ public class Validator {
 		if (space < 0) {
 			return false;
 		}
-		boolean below = false;
-		boolean above = false;
-		boolean right = false;
-		boolean left = false;
+		boolean horizontal = false;
+		boolean vertical = false;
 		boolean backwardDiagonal = false;
 		boolean forwardDiagonal = false;
-		if (space < 21) {
-			// test below spaces
-			below = checkDirection(board, space, GameBoard.BELOW, GameBoard.ABOVE);
-		}
-		if (space > 20) {
-			// test above spaces
-			above = checkDirection(board, space, GameBoard.ABOVE, GameBoard.BELOW);
-		}
-		if (space % GameBoard.LEVEL < 4) {
-			// test right spaces
-			right = checkDirection(board, space, GameBoard.LEFT, GameBoard.RIGHT);
-		}
-		if (space % GameBoard.LEVEL > 2) {
-			// test left spaces
-			left = checkDirection(board, space, GameBoard.RIGHT, GameBoard.LEFT);
-		}
+
+		horizontal = checkDirection(board, space, horizontalInformation.get(space).getMaxBelow(),
+				horizontalInformation.get(space).getMaxAbove(), GameBoard.LEFT, GameBoard.RIGHT);
+		vertical = checkDirection(board, space, verticalInformation.get(space).getMaxBelow(),
+				verticalInformation.get(space).getMaxAbove(), GameBoard.ABOVE, GameBoard.BELOW);
+
 		if (!invalidBackwardDiagonal.contains(space)) {
 			// test backward diagonal spaces
 			backwardDiagonal = checkDirection(board, space, backwardDiagonalInformation.get(space).getMaxBelow(),
@@ -56,46 +46,7 @@ public class Validator {
 			forwardDiagonal = checkDirection(board, space, forwardDiagonalInformation.get(space).getMaxBelow(),
 					forwardDiagonalInformation.get(space).getMaxAbove(), GameBoard.BELOW_LEFT, GameBoard.ABOVE_RIGHT);
 		}
-		return below || above || right || left || backwardDiagonal || forwardDiagonal;
-	}
-
-	private boolean checkDirection(char[] board, int space, int direction, int oppositeDirection) {
-		final StringBuilder connectFour = new StringBuilder();
-		connectFour.append(board[space]);
-		int pointer = space;
-		do {
-			pointer += direction;
-			connectFour.append(board[pointer]);
-		} while (board[space] == board[pointer]);
-		final String baseString = connectFour.toString().substring(0, connectFour.length() - 1);
-		if (baseString.length() == 4) {
-			return true;
-		}
-		return checkOppositeDirection(board, oppositeDirection, 4 - baseString.length(), space, baseString);
-	}
-
-	private boolean checkOppositeDirection(char[] board, int oppositeDirection, int times, int space,
-			String baseString) {
-		final StringBuilder connectFour = new StringBuilder();
-		int failSafe = space;
-		for (int i = 0; i < times; i++) {
-			failSafe += oppositeDirection;
-		}
-		if (failSafe > 41 || failSafe < 0) {
-			// the amount of times needed to complete the
-			// string exceeds the bounds of the game board
-			return false;
-		}
-		int pointer = space;
-		for (int i = 0; i < times; i++) {
-			pointer += oppositeDirection;
-			if (board[space] == board[pointer]) {
-				connectFour.append(board[pointer]);
-			} else {
-				break;
-			}
-		}
-		return connectFour.toString().length() + baseString.length() == 4;
+		return vertical || horizontal || backwardDiagonal || forwardDiagonal;
 	}
 
 	private boolean checkDirection(char[] board, int space, int timesBelow, int timesAbove, int direction,
