@@ -8,14 +8,21 @@ import com.jesseoj98.connectfour.util.Helper;
 import com.jesseoj98.connectfour.util.Printer;
 import com.jesseoj98.connectfour.util.Validator;
 
+/**
+ * Game class plays the Connect Four game
+ */
 public class Game {
 
+	/** Instantiation of classes */
 	private static final Generator generator = new Generator();
 	private static final Helper helper = new Helper();
 	private static final Printer printer = new Printer();
 	private static final Scanner scanner = new Scanner(System.in);
 	private static final Validator validator = new Validator();
 
+	/**
+	 * Preliminary setup class before playing Connect Four game
+	 */
 	public void playGame() {
 
 		char userInput;
@@ -47,6 +54,13 @@ public class Game {
 		System.out.print("\nPlay again? (y/n): ");
 	}
 
+	/**
+	 * Class that actually plays the Connect Four game
+	 * 
+	 * @param userPlayingCharacter the user playing character
+	 * @param cpuPlayingCharacter  the cpu playing character
+	 * @param letCpuGoFirst        whether the cpu should go first
+	 */
 	private void playGame(char userPlayingCharacter, char cpuPlayingCharacter, boolean letCpuGoFirst) {
 
 		int userInput;

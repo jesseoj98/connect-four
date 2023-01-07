@@ -1,5 +1,8 @@
 package com.jesseoj98.connectfour.domain;
 
+/**
+ * GameBoard class defines helpful constants in relation to the game board
+ */
 public class GameBoard {
 
 	public static final int ABOVE_LEFT = -8;
