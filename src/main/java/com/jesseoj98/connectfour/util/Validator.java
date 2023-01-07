@@ -32,7 +32,7 @@ public class Validator {
 		boolean forwardDiagonal = false;
 
 		horizontal = checkDirection(board, space, horizontalInformation.get(space).getMaxBelow(),
-				horizontalInformation.get(space).getMaxAbove(), GameBoard.LEFT, GameBoard.RIGHT);
+				horizontalInformation.get(space).getMaxAbove(), GameBoard.RIGHT, GameBoard.LEFT);
 		vertical = checkDirection(board, space, verticalInformation.get(space).getMaxBelow(),
 				verticalInformation.get(space).getMaxAbove(), GameBoard.BELOW, GameBoard.ABOVE);
 
