@@ -53,6 +53,100 @@ public class Generator {
 		return invalidPositions;
 	}
 
+	public Map<Integer, SpaceBounds> generateVerticalInformation() {
+		final Map<Integer, SpaceBounds> verticals = new HashMap<>();
+		verticals.put(0, new SpaceBounds(0, 3));
+		verticals.put(1, new SpaceBounds(0, 3));
+		verticals.put(2, new SpaceBounds(0, 3));
+		verticals.put(3, new SpaceBounds(0, 3));
+		verticals.put(4, new SpaceBounds(0, 3));
+		verticals.put(5, new SpaceBounds(0, 3));
+		verticals.put(6, new SpaceBounds(0, 3));
+		verticals.put(7, new SpaceBounds(1, 3));
+		verticals.put(8, new SpaceBounds(1, 3));
+		verticals.put(9, new SpaceBounds(1, 3));
+		verticals.put(10, new SpaceBounds(1, 3));
+		verticals.put(11, new SpaceBounds(1, 3));
+		verticals.put(12, new SpaceBounds(1, 3));
+		verticals.put(13, new SpaceBounds(1, 3));
+		verticals.put(14, new SpaceBounds(2, 3));
+		verticals.put(15, new SpaceBounds(2, 3));
+		verticals.put(16, new SpaceBounds(2, 3));
+		verticals.put(17, new SpaceBounds(2, 3));
+		verticals.put(18, new SpaceBounds(2, 3));
+		verticals.put(19, new SpaceBounds(2, 3));
+		verticals.put(20, new SpaceBounds(2, 3));
+		verticals.put(21, new SpaceBounds(3, 2));
+		verticals.put(22, new SpaceBounds(3, 2));
+		verticals.put(23, new SpaceBounds(3, 2));
+		verticals.put(24, new SpaceBounds(3, 2));
+		verticals.put(25, new SpaceBounds(3, 2));
+		verticals.put(26, new SpaceBounds(3, 2));
+		verticals.put(27, new SpaceBounds(3, 2));
+		verticals.put(28, new SpaceBounds(3, 1));
+		verticals.put(29, new SpaceBounds(3, 1));
+		verticals.put(30, new SpaceBounds(3, 1));
+		verticals.put(31, new SpaceBounds(3, 1));
+		verticals.put(32, new SpaceBounds(3, 1));
+		verticals.put(33, new SpaceBounds(3, 1));
+		verticals.put(34, new SpaceBounds(3, 1));
+		verticals.put(35, new SpaceBounds(3, 0));
+		verticals.put(36, new SpaceBounds(3, 0));
+		verticals.put(37, new SpaceBounds(3, 0));
+		verticals.put(38, new SpaceBounds(3, 0));
+		verticals.put(39, new SpaceBounds(3, 0));
+		verticals.put(40, new SpaceBounds(3, 0));
+		verticals.put(41, new SpaceBounds(3, 0));
+		return verticals;
+	}
+
+	public Map<Integer, SpaceBounds> generateHorizontalInformation() {
+		final Map<Integer, SpaceBounds> horizontals = new HashMap<>();
+		horizontals.put(0, new SpaceBounds(0, 3));
+		horizontals.put(1, new SpaceBounds(1, 3));
+		horizontals.put(2, new SpaceBounds(2, 3));
+		horizontals.put(3, new SpaceBounds(3, 3));
+		horizontals.put(4, new SpaceBounds(3, 2));
+		horizontals.put(5, new SpaceBounds(3, 1));
+		horizontals.put(6, new SpaceBounds(3, 0));
+		horizontals.put(7, new SpaceBounds(0, 3));
+		horizontals.put(8, new SpaceBounds(1, 3));
+		horizontals.put(9, new SpaceBounds(2, 3));
+		horizontals.put(10, new SpaceBounds(3, 3));
+		horizontals.put(11, new SpaceBounds(3, 2));
+		horizontals.put(12, new SpaceBounds(3, 1));
+		horizontals.put(13, new SpaceBounds(3, 0));
+		horizontals.put(14, new SpaceBounds(0, 3));
+		horizontals.put(15, new SpaceBounds(1, 3));
+		horizontals.put(16, new SpaceBounds(2, 3));
+		horizontals.put(17, new SpaceBounds(3, 3));
+		horizontals.put(18, new SpaceBounds(3, 2));
+		horizontals.put(19, new SpaceBounds(3, 1));
+		horizontals.put(20, new SpaceBounds(3, 0));
+		horizontals.put(21, new SpaceBounds(0, 3));
+		horizontals.put(22, new SpaceBounds(1, 3));
+		horizontals.put(23, new SpaceBounds(2, 3));
+		horizontals.put(24, new SpaceBounds(3, 3));
+		horizontals.put(25, new SpaceBounds(3, 2));
+		horizontals.put(26, new SpaceBounds(3, 1));
+		horizontals.put(27, new SpaceBounds(3, 0));
+		horizontals.put(28, new SpaceBounds(0, 3));
+		horizontals.put(29, new SpaceBounds(1, 3));
+		horizontals.put(30, new SpaceBounds(2, 3));
+		horizontals.put(31, new SpaceBounds(3, 3));
+		horizontals.put(32, new SpaceBounds(3, 2));
+		horizontals.put(33, new SpaceBounds(3, 1));
+		horizontals.put(34, new SpaceBounds(3, 0));
+		horizontals.put(35, new SpaceBounds(0, 3));
+		horizontals.put(36, new SpaceBounds(1, 3));
+		horizontals.put(37, new SpaceBounds(2, 3));
+		horizontals.put(38, new SpaceBounds(3, 3));
+		horizontals.put(39, new SpaceBounds(3, 2));
+		horizontals.put(40, new SpaceBounds(3, 1));
+		horizontals.put(41, new SpaceBounds(3, 0));
+		return horizontals;
+	}
+
 	public Map<Integer, SpaceBounds> generateBackwardDiagonalInformation() {
 		final Map<Integer, SpaceBounds> diagonals = new HashMap<>();
 		diagonals.put(0, new SpaceBounds(0, 3));
