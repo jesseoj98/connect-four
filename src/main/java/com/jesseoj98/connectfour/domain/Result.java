@@ -6,22 +6,22 @@ import java.util.Objects;
 /**
  * Result class stores information about the result of the game
  */
-public class Result {
+public final class Result {
 
 	/**
 	 * Whether the cpu won
 	 */
-	private boolean cpuWon;
+	private final boolean cpuWon;
 
 	/**
 	 * Whether the player won
 	 */
-	private boolean playerWon;
+	private final boolean playerWon;
 
 	/**
 	 * The winning spaces
 	 */
-	private List<Integer> winningSpaces;
+	private final List<Integer> winningSpaces;
 
 	/**
 	 * Constructor to build the object
@@ -46,15 +46,6 @@ public class Result {
 	}
 
 	/**
-	 * Sets the cpu won
-	 * 
-	 * @param cpuWon the cpu won to set
-	 */
-	public void setCpuWon(boolean cpuWon) {
-		this.cpuWon = cpuWon;
-	}
-
-	/**
 	 * Gets the player won
 	 * 
 	 * @return if the player won
@@ -64,30 +55,12 @@ public class Result {
 	}
 
 	/**
-	 * Sets the player won
-	 * 
-	 * @param playerWon the player won to set
-	 */
-	public void setPlayerWon(boolean playerWon) {
-		this.playerWon = playerWon;
-	}
-
-	/**
 	 * Gets the winning spaces
 	 * 
 	 * @return the winning spaces
 	 */
 	public List<Integer> getWinningSpaces() {
 		return winningSpaces;
-	}
-
-	/**
-	 * Sets the winning spaces
-	 * 
-	 * @param winningSpaces the winning spaces to set
-	 */
-	public void setWinningSpaces(List<Integer> winningSpaces) {
-		this.winningSpaces = winningSpaces;
 	}
 
 	@Override

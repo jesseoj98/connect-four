@@ -6,17 +6,17 @@ import java.util.Objects;
  * SpaceBounds class holds information relating to two maximum directions to
  * form a connect four string
  */
-public class SpaceBounds {
+public final class SpaceBounds {
 
 	/**
 	 * The max above
 	 */
-	private int maxAbove;
+	private final int maxAbove;
 
 	/**
 	 * The max below
 	 */
-	private int maxBelow;
+	private final int maxBelow;
 
 	/**
 	 * Constructor to build the object
@@ -39,30 +39,12 @@ public class SpaceBounds {
 	}
 
 	/**
-	 * Sets the max above
-	 * 
-	 * @param maxAbove the max above to set
-	 */
-	public void setMaxAbove(int maxAbove) {
-		this.maxAbove = maxAbove;
-	}
-
-	/**
 	 * Gets the max below
 	 * 
 	 * @return the max below
 	 */
 	public int getMaxBelow() {
 		return maxBelow;
-	}
-
-	/**
-	 * Sets the max below
-	 * 
-	 * @param maxBelow the max below to set
-	 */
-	public void setMaxBelow(int maxBelow) {
-		this.maxBelow = maxBelow;
 	}
 
 	@Override
