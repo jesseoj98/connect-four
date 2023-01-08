@@ -87,8 +87,9 @@ public class Game {
 
 			do {
 				userInput = scanner.nextInt();
-			} while (!(userInput >= GameBoard.LOWER_BOUND && userInput <= GameBoard.UPPER_BOUND) && helper
-					.isSpaceAlreadyOccupied(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)));
+			} while ((!(userInput >= GameBoard.LOWER_BOUND && userInput <= GameBoard.UPPER_BOUND) && helper
+					.isSpaceAlreadyOccupied(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1)))
+					|| helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1) < 0);
 
 			userInsertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1);
 			helper.insertInputIntoBoard(gameBoard, userInsertionPoint, userPlayingCharacter);
@@ -100,7 +101,8 @@ public class Game {
 			do {
 				cpuInput = generator.generateRandomInput();
 			} while (helper.isSpaceAlreadyOccupied(gameBoard,
-					helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1)));
+					helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1))
+					|| helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1) < 0);
 
 			cpuInsertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1);
 			helper.insertInputIntoBoard(gameBoard, cpuInsertionPoint, cpuPlayingCharacter);
@@ -118,7 +120,8 @@ public class Game {
 		final boolean cpuWon = validator.connectFour(gameBoard, cpuInsertionPoint);
 
 		System.out.println();
-		validator.handleResult(playerWon, cpuWon, gameBoard, userPlayingCharacter, cpuPlayingCharacter, userInsertionPoint, cpuInsertionPoint);
+		validator.handleResult(playerWon, cpuWon, gameBoard, userPlayingCharacter, cpuPlayingCharacter,
+				userInsertionPoint, cpuInsertionPoint);
 
 	}
 
