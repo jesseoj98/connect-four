@@ -257,7 +257,7 @@ public class Generator {
 		diagonals.put(12, new SpaceBounds(1, 3));
 		diagonals.put(13, new SpaceBounds(0, 3));
 		diagonals.put(15, new SpaceBounds(2, 1));
-		diagonals.put(16, new SpaceBounds(2, 3));
+		diagonals.put(16, new SpaceBounds(2, 2));
 		diagonals.put(17, new SpaceBounds(2, 3));
 		diagonals.put(18, new SpaceBounds(2, 3));
 		diagonals.put(19, new SpaceBounds(1, 3));
