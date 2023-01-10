@@ -89,7 +89,7 @@ public class Validator {
 				break;
 			}
 		}
-		if (connectFour.toString().length() == 4) {
+		if (connectFour.toString().length() > 3) {
 			return true;
 		}
 		pointer = space;
@@ -101,7 +101,7 @@ public class Validator {
 				break;
 			}
 		}
-		return connectFour.toString().length() == 4;
+		return connectFour.toString().length() > 3;
 	}
 
 	/**
