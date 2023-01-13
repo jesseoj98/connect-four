@@ -61,7 +61,7 @@ public class Helper {
 			do {
 				space = space + GameBoard.ABOVE;
 				if (space < 0) {
-					System.out.println("Cannot insert, column full!");
+					System.out.println("Cannot insert into column " + ((column % 6) + 1) + ", column full!");
 					break;
 				}
 			} while (isSpaceAlreadyOccupied(board, space));
