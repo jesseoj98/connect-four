@@ -117,27 +117,6 @@ public class Generator {
 		verticals.put(18, new SpaceBounds(2, 3));
 		verticals.put(19, new SpaceBounds(2, 3));
 		verticals.put(20, new SpaceBounds(2, 3));
-		verticals.put(21, new SpaceBounds(3, 2));
-		verticals.put(22, new SpaceBounds(3, 2));
-		verticals.put(23, new SpaceBounds(3, 2));
-		verticals.put(24, new SpaceBounds(3, 2));
-		verticals.put(25, new SpaceBounds(3, 2));
-		verticals.put(26, new SpaceBounds(3, 2));
-		verticals.put(27, new SpaceBounds(3, 2));
-		verticals.put(28, new SpaceBounds(3, 1));
-		verticals.put(29, new SpaceBounds(3, 1));
-		verticals.put(30, new SpaceBounds(3, 1));
-		verticals.put(31, new SpaceBounds(3, 1));
-		verticals.put(32, new SpaceBounds(3, 1));
-		verticals.put(33, new SpaceBounds(3, 1));
-		verticals.put(34, new SpaceBounds(3, 1));
-		verticals.put(35, new SpaceBounds(3, 0));
-		verticals.put(36, new SpaceBounds(3, 0));
-		verticals.put(37, new SpaceBounds(3, 0));
-		verticals.put(38, new SpaceBounds(3, 0));
-		verticals.put(39, new SpaceBounds(3, 0));
-		verticals.put(40, new SpaceBounds(3, 0));
-		verticals.put(41, new SpaceBounds(3, 0));
 		return verticals;
 	}
 

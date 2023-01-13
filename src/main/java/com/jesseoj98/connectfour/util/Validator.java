@@ -47,8 +47,10 @@ public class Validator {
 
 		horizontal = checkDirection(board, space, horizontalInformation.get(space).getMaxBelow(),
 				horizontalInformation.get(space).getMaxAbove(), GameBoard.RIGHT, GameBoard.LEFT);
-		vertical = checkDirection(board, space, verticalInformation.get(space).getMaxBelow(),
-				verticalInformation.get(space).getMaxAbove(), GameBoard.BELOW, GameBoard.ABOVE);
+		if (space < 21) {
+			vertical = checkDirection(board, space, verticalInformation.get(space).getMaxBelow(),
+					verticalInformation.get(space).getMaxAbove(), GameBoard.BELOW, GameBoard.ABOVE);
+		}
 
 		if (!invalidBackwardDiagonal.contains(space)) {
 			// test backward diagonal spaces
