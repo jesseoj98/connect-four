@@ -9,39 +9,16 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.jesseoj98.connectfour.domain.GameBoard;
 import com.jesseoj98.connectfour.domain.SpaceBounds;
 
-/**
- * Generator class generates important information about the game
- */
 public class Generator {
 
-	/**
-	 * Generates the game board
-	 * 
-	 * @return the game board char array
-	 */
 	public char[] generateGameBoard() {
 		return new char[GameBoard.GAME_BOARD_SPACES];
 	}
 
-	/**
-	 * Generates a random input from 1 to 7 (both inclusive)
-	 * 
-	 * @return a random input from 1 to 7 (both inclusive)
-	 */
 	public int generateRandomInput() {
 		return ThreadLocalRandom.current().nextInt(1, GameBoard.GAME_BOARD_X_AXIS + 1);
 	}
 
-	/**
-	 * Generates a list of invalid backward diagonal positions to avoid redundant
-	 * checks
-	 * 
-	 * The six indices (4, 5, 6, 12, 13, 20) in the upper-right corner and the six
-	 * indices (20, 21, 28, 29, 35, 36, 37) in the bottom-left corner are invalid
-	 * since none of them have four consecutive spaces to form a connect four String
-	 * 
-	 * @return a list of invalid backward diagonal positions
-	 */
 	public List<Integer> generateInvalidBackwardDiagonalPositions() {
 		final List<Integer> invalidPositions = new ArrayList<>();
 		invalidPositions.add(4);
@@ -59,16 +36,6 @@ public class Generator {
 		return invalidPositions;
 	}
 
-	/**
-	 * Generates a list of invalid forward diagonal positions to avoid redundant
-	 * checks
-	 * 
-	 * The six indices (0, 1, 2, 7, 8, 14) in the upper-left corner and the six
-	 * indices (14, 27, 33, 34, 39, 40, 41) in the bottom-right corner are invalid
-	 * since none of them have four consecutive spaces to form a connect four String
-	 * 
-	 * @return a list of invalid forward diagonal positions
-	 */
 	public List<Integer> generateInvalidForwardDiagonalPositions() {
 		final List<Integer> invalidPositions = new ArrayList<>();
 		invalidPositions.add(0);
@@ -86,14 +53,6 @@ public class Generator {
 		return invalidPositions;
 	}
 
-	/**
-	 * Generates a map with indices and bounds to help form a vertical connect four
-	 * String
-	 * 
-	 * Any index is eligible to have a vertical connect four form on it
-	 * 
-	 * @return a map with information to construct a vertical connect four string
-	 */
 	public Map<Integer, SpaceBounds> generateVerticalInformation() {
 		final Map<Integer, SpaceBounds> verticals = new HashMap<>();
 		verticals.put(0, new SpaceBounds(0, 3));
@@ -120,14 +79,6 @@ public class Generator {
 		return verticals;
 	}
 
-	/**
-	 * Generates a map with indices and bounds to help form a horizontal connect
-	 * four String
-	 * 
-	 * Any index is eligible to have a horizontal connect four form on it
-	 * 
-	 * @return a map with information to construct a horizontal connect four string
-	 */
 	public Map<Integer, SpaceBounds> generateHorizontalInformation() {
 		final Map<Integer, SpaceBounds> horizontals = new HashMap<>();
 		horizontals.put(0, new SpaceBounds(0, 3));
@@ -175,13 +126,6 @@ public class Generator {
 		return horizontals;
 	}
 
-	/**
-	 * Generates a map with indices and bounds to help form a backwards diagonal
-	 * connect four String
-	 * 
-	 * @return a map with information to construct a backwards diagonal connect four
-	 *         string
-	 */
 	public Map<Integer, SpaceBounds> generateBackwardDiagonalInformation() {
 		final Map<Integer, SpaceBounds> diagonals = new HashMap<>();
 		diagonals.put(0, new SpaceBounds(0, 3));
@@ -217,13 +161,6 @@ public class Generator {
 		return diagonals;
 	}
 
-	/**
-	 * Generates a map with indices and bounds to help form a forwards diagonal
-	 * connect four String
-	 * 
-	 * @return a map with information to construct a forwards diagonal connect four
-	 *         string
-	 */
 	public Map<Integer, SpaceBounds> generateForwardDiagonalInformation() {
 		final Map<Integer, SpaceBounds> diagonals = new HashMap<>();
 		diagonals.put(3, new SpaceBounds(0, 3));

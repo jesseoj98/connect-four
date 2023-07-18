@@ -38,11 +38,6 @@ public class Printer {
 		}
 	}
 
-	/**
-	 * Prints the result of the game
-	 * 
-	 * @param result the result of the game
-	 */
 	public void printResult(Result result) {
 		if (result.isPlayerWon()) {
 			System.out.print("Congratulations! You won with positions ");
@@ -52,13 +47,6 @@ public class Printer {
 		System.out.print(printPositions(result.getWinningSpaces()));
 	}
 
-	/**
-	 * Prints the winning positions
-	 * 
-	 * @param positions the positions to print
-	 * 
-	 * @return a String of the printed positions
-	 */
 	private String printPositions(List<List<Integer>> positions) {
 		final StringBuilder spots = new StringBuilder();
 		for (int i = 0; i < positions.size(); i++) {
