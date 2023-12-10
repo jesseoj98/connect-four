@@ -3,6 +3,7 @@ package com.jesseoj98.connectfour.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.jesseoj98.connectfour.domain.GameBoard;
 import com.jesseoj98.connectfour.domain.Result;
@@ -14,8 +15,8 @@ public class Validator {
 	private static final Helper helper = new Helper();
 	private static final Printer printer = new Printer();
 
-	private static final List<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
-	private static final List<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
+	private static final Set<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
+	private static final Set<Integer> invalidForwardDiagonal = generator.generateInvalidForwardDiagonalPositions();
 
 	private static final Map<Integer, SpaceBounds> horizontalInformation = generator.generateHorizontalInformation();
 	private static final Map<Integer, SpaceBounds> verticalInformation = generator.generateVerticalInformation();

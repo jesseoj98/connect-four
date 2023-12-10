@@ -1,9 +1,9 @@
 package com.jesseoj98.connectfour.util;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.jesseoj98.connectfour.domain.GameBoard;
@@ -19,8 +19,8 @@ public class Generator {
 		return ThreadLocalRandom.current().nextInt(1, GameBoard.GAME_BOARD_X_AXIS + 1);
 	}
 
-	public List<Integer> generateInvalidBackwardDiagonalPositions() {
-		final List<Integer> invalidPositions = new ArrayList<>();
+	public Set<Integer> generateInvalidBackwardDiagonalPositions() {
+		final Set<Integer> invalidPositions = new HashSet<>();
 		invalidPositions.add(4);
 		invalidPositions.add(5);
 		invalidPositions.add(6);
@@ -36,8 +36,8 @@ public class Generator {
 		return invalidPositions;
 	}
 
-	public List<Integer> generateInvalidForwardDiagonalPositions() {
-		final List<Integer> invalidPositions = new ArrayList<>();
+	public Set<Integer> generateInvalidForwardDiagonalPositions() {
+		final Set<Integer> invalidPositions = new HashSet<>();
 		invalidPositions.add(0);
 		invalidPositions.add(1);
 		invalidPositions.add(2);
