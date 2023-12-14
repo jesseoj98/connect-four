@@ -7,8 +7,6 @@ import com.jesseoj98.connectfour.domain.Result;
 
 public class Printer {
 
-	private static Helper helper = new Helper();
-
 	public void printGameBoard(char[] board) {
 		printGameBoardInsertNumbers();
 		printGameBoardDivider();
@@ -31,7 +29,7 @@ public class Printer {
 	}
 
 	private String printGameBoardSpace(char space) {
-		if (helper.isSpaceAlreadyOccupied(space)) {
+		if (space == 'X' || space == 'O') {
 			return " " + Character.toString(space) + " ";
 		} else {
 			return "   ";

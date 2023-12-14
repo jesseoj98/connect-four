@@ -4,20 +4,11 @@ import com.jesseoj98.connectfour.domain.GameBoard;
 
 public class Helper {
 
-	public boolean isSpaceAlreadyOccupied(char space) {
-		return space == 'X' || space == 'O';
-		// return space != ' ';
-	}
-
 	public boolean isSpaceAlreadyOccupied(char[] board, int space) {
 		if (space < 0) {
 			return false;
 		}
-		return isSpaceAlreadyOccupied(board[space]);
-	}
-
-	public void insertInputIntoBoard(char[] board, int space, char insert) {
-		board[space] = insert;
+		return board[space] == 'X' || board[space] == 'O';
 	}
 
 	public int retrieveAvailableBoardSpace(char[] board, int column) {

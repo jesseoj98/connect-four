@@ -12,7 +12,6 @@ import com.jesseoj98.connectfour.domain.SpaceBounds;
 public class Validator {
 
 	private static final Generator generator = new Generator();
-	private static final Helper helper = new Helper();
 	private static final Printer printer = new Printer();
 
 	private static final Set<Integer> invalidBackwardDiagonal = generator.generateInvalidBackwardDiagonalPositions();
@@ -109,7 +108,7 @@ public class Validator {
 
 	public boolean allGameBoardSpacesFilled(char[] gameBoard) {
 		for (int i = 0; i < GameBoard.GAME_BOARD_SPACES; i++) {
-			if (!helper.isSpaceAlreadyOccupied(gameBoard[i])) {
+			if (!(gameBoard[i] == 'X' || gameBoard[i] == 'O')) {
 				return false;
 			}
 		}

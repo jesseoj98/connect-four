@@ -4,20 +4,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
-import com.jesseoj98.connectfour.domain.GameBoard;
 import com.jesseoj98.connectfour.domain.SpaceBounds;
 
 public class Generator {
-
-	public char[] generateGameBoard() {
-		return new char[GameBoard.GAME_BOARD_SPACES];
-	}
-
-	public int generateRandomInput() {
-		return ThreadLocalRandom.current().nextInt(1, GameBoard.GAME_BOARD_X_AXIS + 1);
-	}
 
 	public Set<Integer> generateInvalidBackwardDiagonalPositions() {
 		final Set<Integer> invalidPositions = new HashSet<>();

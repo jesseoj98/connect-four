@@ -1,16 +1,15 @@
 package com.jesseoj98.connectfour;
 
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.jesseoj98.connectfour.domain.GameBoard;
-import com.jesseoj98.connectfour.util.Generator;
 import com.jesseoj98.connectfour.util.Helper;
 import com.jesseoj98.connectfour.util.Printer;
 import com.jesseoj98.connectfour.util.Validator;
 
 public class Game {
 
-	private static final Generator generator = new Generator();
 	private static final Helper helper = new Helper();
 	private static final Printer printer = new Printer();
 	private static final Scanner scanner = new Scanner(System.in);
@@ -56,12 +55,11 @@ public class Game {
 		// getting initialized at least once but Java still wants this initialized
 		int cpuInsertionPoint = 0;
 
-		final char[] gameBoard = generator.generateGameBoard();
+		final char[] gameBoard = new char[GameBoard.GAME_BOARD_SPACES];
 
 		if (letCpuGoFirst) {
-			final int cpuFirstPlay = generator.generateRandomInput();
-			helper.insertInputIntoBoard(gameBoard, helper.retrieveAvailableBoardSpace(gameBoard, cpuFirstPlay - 1),
-					cpuPlayingCharacter);
+			final int cpuFirstPlay = ThreadLocalRandom.current().nextInt(1, GameBoard.GAME_BOARD_X_AXIS + 1);
+			gameBoard[helper.retrieveAvailableBoardSpace(gameBoard, cpuFirstPlay - 1)] = cpuPlayingCharacter;
 		}
 
 		System.out.println();
@@ -78,20 +76,20 @@ public class Game {
 					|| helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1) < 0);
 
 			userInsertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, userInput - 1);
-			helper.insertInputIntoBoard(gameBoard, userInsertionPoint, userPlayingCharacter);
+			gameBoard[userInsertionPoint] = userPlayingCharacter;
 
 			if (validator.connectFour(gameBoard, userInsertionPoint) || validator.allGameBoardSpacesFilled(gameBoard)) {
 				break;
 			}
 
 			do {
-				cpuInput = generator.generateRandomInput();
+				cpuInput = ThreadLocalRandom.current().nextInt(1, GameBoard.GAME_BOARD_X_AXIS + 1);
 			} while (helper.isSpaceAlreadyOccupied(gameBoard,
 					helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1))
 					|| helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1) < 0);
 
 			cpuInsertionPoint = helper.retrieveAvailableBoardSpace(gameBoard, cpuInput - 1);
-			helper.insertInputIntoBoard(gameBoard, cpuInsertionPoint, cpuPlayingCharacter);
+			gameBoard[cpuInsertionPoint] = cpuPlayingCharacter;
 
 			System.out.println();
 			printer.printGameBoard(gameBoard);
